@@ -26,7 +26,15 @@ def fact_iter(n):
 - ignore additive constants
 - ignore multiplications constants
 
-![Big O Notation](8psl4kk-1450149829.png)
+## Types of orders of growth
+1. Constant 
+2. Linear
+3. Quadratic
+4. Logarithmic : *Binary Search* is an example of this
+5. nlogn : Mainly used in *sorting algorithim*
+6. Exponential 
+
+![Big O Notation](bigONotation.png)
 
 
 #### Law of Addition
@@ -45,5 +53,36 @@ for i in range(n):
 ```
 is ``` O(n) + O(n*n) = O(n+n^2) ``` because of domainant term
 
+#### Law of multiplication
+- used with nested loops
+- ```O(f(n)) * O(g(n)) is O(f(n) * g(n))```
+for example
 
 ```
+for i in range(n):
+    for j in range(n):
+        print('a')
+```
+
+if `O(n)*O(n) = O(n*n) = O(n^2)` because the outer loops goes n times and the inner liip goes n times for every outer loop iter. 
+
+![alt text](ComplexityGrowth.webp)
+
+```
+number = int(input('Enter the number'))
+
+digits = '0123456789'
+result = ''
+
+while number !=0:
+    result = digits[number % 10] + result
+    number = number//10
+
+print(result)
+
+```
+
+***Big O of this would be log(n)***
+
+
+
