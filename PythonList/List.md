@@ -190,3 +190,100 @@ print(L)
 --output--
 [1, 2, 3, 4, 5]
 ```
+---
+
+# Items in a list
+
+- String are not *mutable*
+  
+```
+# index editing
+l = [1,2,3,4,5]
+l[1] = 100
+print(l)
+
+--- output ---
+[1, 100, 3, 4, 5]
+
+```
+```
+# slicing editing
+l = [1,2,3,4,5]
+l[0:3]=[100,200,300]
+print(l)
+
+--- output ---
+[100, 200, 300, 4, 5]
+```
+
+---
+# Deleting items
+- del is used with indexing
+
+```
+# index deleting
+L = [1,2,3,4,5]
+
+del L[0]
+print(L)
+
+--output--
+[2, 3, 4, 5]
+```
+---
+# Remove
+- Item can be deleted based on value instead of indexing 
+
+```
+L = [1,2,3,4,5]
+
+del L[0]
+print(L)
+
+--output--
+[1, 2, 3, 4]
+```
+---
+# Pop
+```
+# pop
+L = [1,2,3,4,5]
+(L.pop(1))
+print(L)
+
+--output--
+[1, 3, 4, 5]
+```
+# Clear
+- Clear emptys the list 
+```
+L = [1,2,3,4,5]
+L.clear()
+print(L)
+
+--output--
+[]
+```
+
+---
+# Operations on List
+- Arithmetic
+- Membership
+- Loop
+
+```
+L1 = [1,2,3,4,5]
+L2 = [5,6,7,8,9,10]
+print(L1 + L2)
+
+--output--
+[1, 2, 3, 4, 5, 5, 6, 7, 8, 9, 10]
+```
+
+```
+# Multiplication
+L1 = [1,2,3,4,5]
+print(L1*3)
+
+--OUTPUT--
+[1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5]
