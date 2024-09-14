@@ -1,4 +1,4 @@
-## Python list
+# Python list
 
 ### What are Lists?
 
@@ -6,7 +6,7 @@ List is a datat type where you can store multiple items under 1 name. More techn
 
 > L = [20, 'jessa', 35.75, [30,60,90]]
 ---
-### Array vs Lists
+# Array vs Lists
 
 - Fixed vs Dynamic size
 -  Convenience -> ***Hetroogenous***
@@ -70,3 +70,123 @@ Ouput
 
 - **Dynamic Resizing**: Lists support dynamic resizing, which involves memory reallocation and copying elements, adding overhead and slowing down operations.
 
+---
+
+# Characterstics of a List
+
+- Ordered : Item order is important 
+- Changeable/Mutable
+- Hetrogenous
+- Can have duplicated items/values
+- Are dynamic
+- Can be nested
+- Items can be accessed
+- Can contain anyu kind of objects in python
+  
+**Empty list**
+  
+-  `print([])`
+
+**1D List**
+- `print([1,2,3,4,5])`
+
+**2D List**
+  
+- `print([1,2,3,[4,5]])` -> This is hetrogenous
+  
+**3D List**
+
+`print([[[1,2], [3,4]],[[5,6],[7,8]]])` -> This is homogenous list
+
+---
+
+# Accessing Items from a list
+
+
+1. Indexing
+   1. Positive
+   2. Negative
+2. Slicing
+
+
+
+```
+L = [1,2,3,4,5]
+print(L[0]) # positive indexing (It starts with 0)
+print(L[-1]) #Negative indexing (It starts with negative -1)
+
+```
+**3D lists indexing**
+```
+L = [[[1,2], [3,4]],[[5,6],[7,8]]]
+print(L[0])
+print(L[0][1][0])
+print(L[0][0][1])
+
+---output---
+[[1, 2], [3, 4]]
+3
+2
+```
+
+**Slicing**
+
+```
+L = [1,2,3,4,5]
+print(L[0:3])
+print(L[:3])
+print(L[3:])
+print(L[-3:])
+
+---output---
+[1, 2, 3]
+[1, 2, 3]
+[4, 5]
+[3, 4, 5]
+
+```
+```
+L = [1,2,3,4,5,6,7,8,9,10]
+print(L[0:5:1])
+
+-- output --
+[1, 2, 3, 4, 5]
+```
+---
+
+# Adding items to a list
+
+- **Append** : Used to insert item at the end of a list (only single item)
+- **Extend** : Can add multiple items at once in a list
+- **Insert**
+
+```
+# append
+L = [1,2,3,4]
+L.append(5)
+print(L)
+
+--output--
+[1, 2, 3, 4, 5]
+
+```
+
+```
+# extend
+L = [1,2,3,4]
+L.extend([5,6,7])
+print(L)
+
+--output--
+[1, 2, 3, 4, 5, 6, 7]
+
+```
+```
+# insert
+L =[1,2,4,5]
+L.insert(2,3)
+print(L)
+
+--output--
+[1, 2, 3, 4, 5]
+```
