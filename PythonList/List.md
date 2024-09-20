@@ -1,45 +1,43 @@
 # Python list
 
-### What are Lists?
+## What are Lists?
 
-List is a datat type where you can store multiple items under 1 name. More technically, lists act like **dynamic arrays** which means you can add more items on the fly. 
+List is a datat type where you can store multiple items under 1 name. More technically, lists act like **dynamic arrays** which means you can add more items on the fly.
 
 > L = [20, 'jessa', 35.75, [30,60,90]]
 ---
-# Array vs Lists
+
+## Array vs Lists
 
 - Fixed vs Dynamic size
--  Convenience -> ***Hetroogenous***
--  Arrays are ***homogenous*** (only store same data type)
--  Speed of execution (***Array runs faster than list***)
--  Memory (***Array take less memory compared to list***)
+- Convenience -> ***Hetroogenous***
+- Arrays are ***homogenous*** (only store same data type)
+- Speed of execution (***Array runs faster than list***)
+- Memory (***Array take less memory compared to list***)
 
 > Array->  array[Fixed size]
 
-#### How are arrays stored in memory?
+## How are arrays stored in memory?
 
-Arrays are stored in memory using their memory address. For example, instead of memory storing 4 from an array below, it will store it's binary address instead. 
+Arrays are stored in memory using their memory address. For example, instead of memory storing 4 from an array below, it will store it's binary address instead.
 
 > arrays --> int arr(50)
 
-
 ![Memory Array](MemoryArray.jpg)
 
---- 
+---
 
-#### How are lists stored?
+## How are lists stored?
 
 > List = [1,2,3,4,5]
 
 Let's say the number 1 is stored at memory address 500, the number 2 at address 1000, and so on. Instead of storing the actual numbers, a memory block will store these addresses. This memory block also has its own address, like 5000 for example, where the reference to 1 is stored. This is known as a **referential array**.
 
-#### Referential Array
+## Referential Array
 
 A referential array is an array that stores memory addresses (references or pointers) of its elements, rather than the actual data values themselves.
 
-
-
-```
+```{python}
 L = [1,2,3,4,5]
 
 print(id(L[1]))
@@ -58,7 +56,7 @@ Ouput
 
 ---
 
-#### Key differences between Arrays and Lists
+## Key differences between Arrays and Lists
 
 - **Memory Layout**: Arrays store elements in contiguous memory blocks, allowing faster access, while lists store references to objects that may be scattered in memory.
 
@@ -72,9 +70,9 @@ Ouput
 
 ---
 
-# Characterstics of a List
+## Characterstics of a List
 
-- Ordered : Item order is important 
+- Ordered : Item order is important
 - Changeable/Mutable
 - Hetrogenous
 - Can have duplicated items/values
@@ -82,41 +80,41 @@ Ouput
 - Can be nested
 - Items can be accessed
 - Can contain anyu kind of objects in python
-  
-**Empty list**
-  
--  `print([])`
 
-**1D List**
+### Empty list
+
+- `print([])`
+
+### 1D List
+
 - `print([1,2,3,4,5])`
 
-**2D List**
+### 2D List
   
 - `print([1,2,3,[4,5]])` -> This is hetrogenous
   
-**3D List**
+### 3D List
 
 `print([[[1,2], [3,4]],[[5,6],[7,8]]])` -> This is homogenous list
 
 ---
 
-# Accessing Items from a list
-
+## Accessing Items from a list
 
 1. Indexing
    1. Positive
    2. Negative
 2. Slicing
 
-
-
-```
+``` {python}
 L = [1,2,3,4,5]
 print(L[0]) # positive indexing (It starts with 0)
 print(L[-1]) #Negative indexing (It starts with negative -1)
 
 ```
-**3D lists indexing**
+
+### 3D lists indexing
+
 ```
 L = [[[1,2], [3,4]],[[5,6],[7,8]]]
 print(L[0])
@@ -129,7 +127,7 @@ print(L[0][0][1])
 2
 ```
 
-**Slicing**
+### Slicing
 
 ```
 L = [1,2,3,4,5]
@@ -145,6 +143,7 @@ print(L[-3:])
 [3, 4, 5]
 
 ```
+
 ```
 L = [1,2,3,4,5,6,7,8,9,10]
 print(L[0:5:1])
@@ -152,9 +151,10 @@ print(L[0:5:1])
 -- output --
 [1, 2, 3, 4, 5]
 ```
+
 ---
 
-# Adding items to a list
+## Adding items to a list
 
 - **Append** : Used to insert item at the end of a list (only single item)
 - **Extend** : Can add multiple items at once in a list
@@ -181,6 +181,7 @@ print(L)
 [1, 2, 3, 4, 5, 6, 7]
 
 ```
+
 ```
 # insert
 L =[1,2,4,5]
@@ -190,9 +191,10 @@ print(L)
 --output--
 [1, 2, 3, 4, 5]
 ```
+
 ---
 
-# Items in a list
+## Items in a list
 
 - String are not *mutable*
   
@@ -206,6 +208,7 @@ print(l)
 [1, 100, 3, 4, 5]
 
 ```
+
 ```
 # slicing editing
 l = [1,2,3,4,5]
@@ -217,7 +220,9 @@ print(l)
 ```
 
 ---
-# Deleting items
+
+## Deleting items
+
 - del is used with indexing
 
 ```
@@ -230,9 +235,12 @@ print(L)
 --output--
 [2, 3, 4, 5]
 ```
+
 ---
-# Remove
-- Item can be deleted based on value instead of indexing 
+
+## Remove
+
+- Item can be deleted based on value instead of indexing
 
 ```
 L = [1,2,3,4,5]
@@ -243,8 +251,11 @@ print(L)
 --output--
 [1, 2, 3, 4]
 ```
+
 ---
-# Pop
+
+## Pop
+
 ```
 # pop
 L = [1,2,3,4,5]
@@ -254,8 +265,11 @@ print(L)
 --output--
 [1, 3, 4, 5]
 ```
-# Clear
-- Clear emptys the list 
+
+## Clear
+
+- Clear emptys the list
+
 ```
 L = [1,2,3,4,5]
 L.clear()
@@ -266,7 +280,9 @@ print(L)
 ```
 
 ---
-# Operations on List
+
+## Operations on List
+
 - Arithmetic
 - Membership
 - Loop
@@ -287,3 +303,30 @@ print(L1*3)
 
 --OUTPUT--
 [1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5]
+```
+
+---
+
+## List Function
+
+- len/min/max/sorted
+- count
+- index
+- reverse : *Permenant Changes*
+- sort (vs sorted) :  *Permenant Changes*
+- copy
+
+```
+L = [1,2,3,4,5,7,9,10]
+
+print(len(L))
+print(min(L))
+print(max(L))
+print(sorted(L, reverse=True))
+
+--output--
+8
+1
+10
+[10, 9, 7, 5, 4, 3, 2, 1]
+```
