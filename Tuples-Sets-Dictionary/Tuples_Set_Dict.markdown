@@ -486,5 +486,60 @@ print(s)
 - Clear : *Clears the dictionary all the way*
 
 ### Dictionary Operation
-- Membership
+- Membership : *works on keys*
 - Iterations
+
+```
+s = dict({'name':['Artist','Batman'], 'Gender':[100, 150]})
+
+
+for keys, values in s.items():
+    print(keys, ':', values)
+
+--output--
+s = dict({'name':['Artist','Batman'], 'Gender':[100, 150]})
+
+
+for keys, values in s.items():
+    print(keys, ':', values)
+```
+
+### Dictionary Functions
+- len/sorted
+- min/max
+- items/key/values
+- Update : *Given dictionary can be updated with another dictionary*
+
+## Dictionary Comprehension
+
+```
+{i**2 for i in range(1,10)}
+
+--output--
+{1, 4, 9, 16, 25, 36, 49, 64, 81}
+```
+```
+distances = {'NY':1000, 'DC':100}
+{keys:values*0.62 for (keys, values) in distances.items()}
+
+--output--
+{'NY': 620.0, 'DC': 62.0}
+```
+```
+prod = dict({'phone':10, 'laptop':0, 'charger':32, 'tablet':0})
+print({keys:values for keys, values in prod.items() if values >0})
+
+--output--
+{'phone': 10, 'charger': 32}
+```
+### Nested Dictionary
+```
+# nested dict
+{i:{j:i*j for j in range(1,11)} for i in range(2,5)}
+
+--output--
+
+{2: {1: 2, 2: 4, 3: 6, 4: 8, 5: 10, 6: 12, 7: 14, 8: 16, 9: 18, 10: 20},
+ 3: {1: 3, 2: 6, 3: 9, 4: 12, 5: 15, 6: 18, 7: 21, 8: 24, 9: 27, 10: 30},
+ 4: {1: 4, 2: 8, 3: 12, 4: 16, 5: 20, 6: 24, 7: 28, 8: 32, 9: 36, 10: 40}}
+ ```
