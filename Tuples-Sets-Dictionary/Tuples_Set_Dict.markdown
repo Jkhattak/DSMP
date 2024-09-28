@@ -303,3 +303,188 @@ Cell In[34], line 1
 
 TypeError: 'set' object doesn't support item deletion
 ```
+## Set Operations 
+- Union : *All points in each sets*
+- Intersection : *Common Items*
+- Difference : *Difference will print*
+- Symmetric Difference : *Everything but common items*
+- Membership Test 
+- Iteration : *Loops*
+
+### Sets built in functions 
+- Len
+- Sum
+- Min
+- Max
+- Sorted
+
+```
+# union / update
+s1 = {1,2,3,4,5}
+s2 = {5,6,7,8,9}
+
+s1.union(s2)
+
+or 
+# union / update
+s1 = {1,2,3,4,5}
+s2 = {5,6,7,8,9}
+
+s1 | s2
+
+--output--
+{1, 2, 3, 4, 5, 6, 7, 8, 9}
+```
+```
+# Intersection
+s1 = {1,2,3,4,5}
+s2 = {5,6,7,8,9}
+
+s1.intersection(s2)
+
+--output--
+{5}
+```
+```
+# symmetric differnce 
+s1 = {1,2,3,4,5}
+s2 = {5,6,7,8,9}
+
+s1.symmetric_difference(s2)
+
+--output--
+{1, 2, 3, 4, 6, 7, 8, 9}
+```
+```
+# disjoint 
+
+s1 = {1,2,3,4,5}
+s2 = {5,6,7,8,9}
+
+s1.isdisjoint(s2)
+
+--output--
+False
+```
+```
+# subset
+s1 = {1,2,3,4,5}
+s2 = {1,2,3}
+
+s2.issubset(s1)
+
+--output--
+True
+```
+## Frozen set
+
+Frozen set is just an **immutable** version of a python set object
+
+```
+fs1 = frozenset([1,2,3])
+fs2 = frozenset([3,4,5])
+
+fs1.union(fs2)
+
+--output--
+frozenset({1, 2, 3, 4, 5})
+```
+## Set Comprehension
+
+```
+# Set Comprehension
+
+{i for i in range(1,10)}
+
+--output--
+{1, 2, 3, 4, 5, 6, 7, 8, 9}
+```
+
+---
+## Dictionary 
+
+Dictionary in python is a collectino of *keys* and *values*, used to store data values like a map, which unlike other data types which hold only a single value as an element. 
+
+In some languages it is known as **map or assosiative arrays**.
+
+dict = {'name' : 'Artist', 'age':'100'}
+
+**Characterstics**
+- Mutable
+- Indexing has no meaning
+- Keys can't be duplicated
+- Keys can't be mutable items such as *list*
+
+```
+# 2d dict ---> Json
+s = {
+    'name': 'Artist',
+    'College' : 'GT',
+    'Sub' : {
+        'math' : 100,
+        'ML': 100,
+        'Stat':100
+    }
+
+}
+
+print(s)
+
+--output--
+{'name': 'Artist', 'College': 'GT', 'Sub': {'math': 100, 'ML': 100, 'Stat': 100}}
+```
+### Accessing items in Dictionary
+
+```
+# Accessing item
+s = {
+    'name': 'Artist',
+    'College' : 'GT',
+    'Sub' : {
+        'math' : 100,
+        'ML': 100,
+        'Stat':100
+    }
+
+}
+s['name'] # Provide key
+
+--output--
+'Artist'
+```
+```
+# Accessubg item
+s = {
+    'name': 'Artist',
+    'College' : 'GT',
+    'Sub' : {
+        'math' : 100,
+        'ML': 100,
+        'Stat':100
+    }
+
+}
+
+
+s.get('College')
+
+--output--
+'GT'
+```
+```
+s['name'] = 'Batman'
+
+print(s)
+
+--output--
+{'name': 'Batman', 'College': 'GT', 'Sub': {'math': 100, 'ML': 100, 'Stat': 100}}
+```
+### Remove key-value pair
+- Pop : *Remove specific value by proviing key to it*
+- Popitem : *last item gets deleted*
+- Del : *Same as pop*
+- Clear : *Clears the dictionary all the way*
+
+### Dictionary Operation
+- Membership
+- Iterations
