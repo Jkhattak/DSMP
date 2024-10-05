@@ -121,3 +121,121 @@ Keyword arguments mean that they contain a key-value pair, like a python diction
 ```
 function.__doc__
 ```
+
+## How functions are executed in memory?
+
+Function acts as a small independent program in memory. 
+```
+def is_even(x):
+    """
+    The purpose of this function is to 
+    find whether a number is even or odd
+    """
+
+    if x %2 ==0:
+        print('Even')
+    elif x%2 !=0:
+        print('Odd')
+    else:
+        print('Not proper input')
+```
+## Without return statment
+
+Function with no return values will return `NONE`
+
+```
+# without return statment
+
+L = [1,2,3]
+print(L.append(4))
+
+--output--
+None
+```
+## Key Differences Between Return and Print
+
+### Return Value:
+
+- return gives a value back to the caller, allowing the result to be used elsewhere.
+- print() only outputs something to the console but returns None.
+
+Use:
+
+- return is used to pass data out of a function.
+- print() is used to display data to the user.
+
+### Function Flow:
+
+- return ends the function's execution immediately.
+- print() does not affect the flow of execution.
+
+## Variable Scope
+- Global Variable : Part of main program
+- Local Variable : Part of function
+
+Local variables can use `Global variables`, but the `opposite` is not the same. 
+
+Global variable and local variable can have same names.
+
+## Functions are 1st Class Citizen 
+
+first class citizens are treated the same way as a data types where any operation can be applied  
+
+- Functions can be reassign 
+- Functions can be deleted 
+- Functions can be stored in a list, tuple, dict, etc
+- Functions are not mutable (set test)
+
+```
+def square(x):
+    return x**2
+
+x = square 
+x(3)
+
+--output--
+9
+```
+
+## Benefits of using a Function 
+
+- Code Modularity
+- Code Readibility 
+- Code Reusability 
+
+## Lambda Function 
+
+A lambda function is a small anonymous function
+
+A lambda function can take any number of arguments, but can only have one expression. 
+
+`lambda a,b : a + b` 
+
+```
+x = lambda x: x**2
+
+x(2)
+
+--output--
+4
+```
+
+### Difference between lambda and normal funciton
+- No name
+- Lambda has no return value
+- lambda is written in 1 line
+- not reusable 
+
+### Why use lambda funciton?
+They are used with High-order-function 
+
+### Higher Order Function 
+
+A type of function that either returns a function or recieve a function as an input
+
+- Map
+- Reduce
+- Filter
+
+
+
