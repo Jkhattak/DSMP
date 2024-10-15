@@ -149,7 +149,7 @@ Magic &rarr; Special &rarr; Super Power
 
 - God is programmer &rarr; Earth is class &rarr; Humans are objects.
     
-- Contructor purpose in this example would be to prevent humans from have the power of death.
+- Constructor purpose in this example would be to prevent humans from have the power of death.
 
 ## Self 
 
@@ -174,3 +174,65 @@ Magic &rarr; Special &rarr; Super Power
 ### `__sub__, __Multi__, __Div__`
 
 - They all do their respective operations.
+
+# Encapsulation
+
+### Write OOP classes to handle the following scenarios:;
+
+- A user can create and view 2D coordinates
+- A user can find out the distance between 2 coordinates
+- A user can find the distance of a coordinate from origin 
+- A user can check if a point lies on a given line 
+- A user can find the distance between a given 2D point and a given line
+
+```
+class Point:
+    def __init__(self,x_coordinate, y_coordinate):
+        self.x_coordinate = x_coordinate
+        self.y_coordinate = y_coordinate
+
+    def __str__ (self):
+        return '< {}, {} >'.format(self.x_coordinate, self.y_coordinate)
+    
+    def eucliden_distance(self, other):
+        return ((self.x_coordinate - other.y_coordinate)**2 + (self.y_coordinate - other.y_coordinate)**2)**0.5
+    
+    def distance_from_origin(self):
+        return self.eucliden_distance(Point(0,0))
+    
+class LineClass:
+    def __init__(self, A,B,C):
+        self.A = A
+        self.B = B
+        self.C = C
+    
+    def __str__(self):
+        return '{}x + {}y + {} = 0'.format(self.A, self.B, self.C)
+    
+    def point_on_line(line, point):
+        if line.A*point.x_coordinate + line.B*point.y_coordinate + line.C == 0:
+            return 'Lies on the line'
+        else:
+            return 'Does not lie on the line'
+        
+    def shortest_distance(line, point):
+        return abs(line.A*point.x_coordinate + line.B*point.y_coordinate + line.C)/(line.A**2 + line.B**2)
+```
+## Reference Variable
+
+Variable used to create an object contains reference of the object
+
+- Refrence variables hold the objects
+- We can create objects without reference variable as well
+- An object can have multiple reference variable
+- Assigning a new reference variable to an existing object does not create a new object
+
+```mermaid
+graph TD;
+    A --> B;
+    A -->  Memory-Address;
+    B --> Memory-Address;
+```
+
+## Pass by reference
+
