@@ -236,3 +236,47 @@ graph TD;
 
 ## Pass by reference
 
+UDF functions in python are *mutable*
+
+
+```
+class Person:
+    def __init__(self, name, gender):
+        self.name = name
+        self.gender = gender
+
+def greet(person):
+    print('Hi, my name is', person.name, 'and I am a', person.gender)
+    print(id(person))
+    p1 = Person('Batman', 'Male')
+    return p1
+
+p = Person('Batman', 'Male')
+x = greet(p)
+print(id(p))
+print(x.name)
+print(x.gender)
+```
+##  Encapsulation
+
+**Instance Variable** - Instance variables are type of variables that have different values for each object.
+
+- `__ name` will make a private variable 
+
+- `__name` create a new variable in the memory therefor it can not be accessed outside the class
+
+- ***"Nothing truly is private in python"***
+
+- Always use `__` infront of each variable
+
+### Purpose 
+- Make variable private 
+- Getter and Setter 
+
+## Static vs Instance 
+
+Instance variable is different for *each object* whereas static variable is *same for all objects.*
+
+- Instance is inside the constructor whereas static is inside each method
+
+ 
