@@ -279,4 +279,16 @@ Instance variable is different for *each object* whereas static variable is *sam
 
 - Instance is inside the constructor whereas static is inside each method
 
- 
+## Class Relationships
+
+- Aggregation
+- Inheritance
+
+## Aggregation (HAS-A Relationships)
+
+Has a relationship (One class owns the other class)
+
+- One class is owner and the other is it's Property
+
+
+
