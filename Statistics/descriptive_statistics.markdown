@@ -5,6 +5,8 @@ Statistics is a branch of mathematics that invovles `collecting, analysing, inte
 
 ## Type of Statistics
 
+<div style="text-align: center;">
+
 ```mermaid 
 graph TD
   Statistics --> Descriptive
@@ -16,6 +18,8 @@ graph TD
 
 
 ```
+</div>
+
 
 ## Descriptive Statistics 
 
@@ -27,6 +31,7 @@ Descriptive Statistics is a branch of statistics that focuses on summarizing and
 - Inferential Statistics is a branch of statistics that allows us to make predictions or inferences about a population based on data collected from a sample. It involves using probability theory to estimate population parameters, test hypotheses, and make decisions or predictions. Inferential statistics go beyond merely describing the data and help determine relationships, assess the reliability of estimates, and draw conclusions that extend beyond the data set at hand. 
   - Examples include hypothesis testing, confidence intervals, regression analysis, and ANOVA.
 
+---
 
 ## Population and Sample are fundamental concepts in statistics:
 
@@ -43,6 +48,8 @@ Descriptive Statistics is a branch of statistics that focuses on summarizing and
 ---
 ## Types of Data
 
+<div style="text-align: center;">
+
 ```mermaid
 graph TD
     A[Types of data] --> B[Categorical or qualitative data]
@@ -52,6 +59,7 @@ graph TD
     C --> E[Discrete data]
     C --> F[Continous data]
 ```
+</div>
 
 - `Types of Data:` Data can be broadly classified into different types based on the characteristics of what is being measured or observed. These types help in selecting appropriate statistical methods for analysis.
 
@@ -67,19 +75,23 @@ graph TD
 
 - `Continuous Data:` Another subcategory of numerical data, continuous data represents values that can take any value within a given range, and there are no gaps between the values. Examples include height, weight, and temperature. Continuous data can be measured to any level of precision, depending on the measurement tool.
 
+---
+
 ## Measure of Central Tendency 
 
 A measure of central tendency is a statistical measure that represents a typical or central value for a dataset. it provides a summary of the data by identifying a single value that is most representative of the dataset as whole. 
 
+<div style="text-align: center;">
+
 ```mermaid
 graph TD    
 
-    A[Measure of Central Tendency] --> B[Mean]
+    A[Measure of central tendency] --> B[Mean]
     A[Measure of Central Tendency] --> C[Median]
     A[Measure of Central Tendency] --> D[Mode]
 
 ```
-
+</div>
 - `Mean:` The average of all values in a dataset, calculated by adding up all the values and dividing by the total number of values. The mean is sensitive to outliers, which can skew the result. 
   - For example, the mean of 2, 3, and 4 is (2+3+4)/3 = 3.
 
@@ -89,6 +101,7 @@ graph TD
 - `Mode:` The value that appears most frequently in a dataset. A dataset may have one mode, more than one mode, or no mode at all if no value repeats. It is best use in categorical dataset.
   - For example, in the dataset 1, 2, 2, 3, the mode is 2.
 
+---
 ### Population Mean vs. Sample Mean
 
 The **Population Mean** and **Sample Mean** are two ways of calculating the average, but they differ in terms of the dataset used:
@@ -117,9 +130,11 @@ The **Population Mean** and **Sample Mean** are two ways of calculating the aver
 
 **Caution**: It is prone to outliers so always be careful when using mean to describe a dataset. 
 
-### Weighted Mean
+---
+## Weighted Mean
 
 The **Weighted Mean** is an average that takes into account the relative importance or frequency of some values in a dataset. Unlike the regular mean, where all values are given equal weight, the weighted mean assigns different weights to different values based on their significance or frequency.
+
 
 ### Formula
 $$
@@ -144,4 +159,5 @@ The weighted mean is particularly useful when:
 
 Examples include calculating a student’s grade point average (where courses have different credit hours) or computing an average cost when different quantities are purchased at different prices.
 
+---
 
