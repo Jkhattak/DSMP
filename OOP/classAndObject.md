@@ -284,11 +284,95 @@ Instance variable is different for *each object* whereas static variable is *sam
 - Aggregation
 - Inheritance
 
-## Aggregation (HAS-A Relationships)
+## Class Relationship: Aggregation
 
-Has a relationship (One class owns the other class)
+```mermaid
+classDiagram
+    class Engine {
+        +horsepower int
+    }
+    class Car {
+        +make string
+        +model string
+        +engine Engine
+        +car_details() string
+    }
 
-- One class is owner and the other is it's Property
+    Car o-- Engine : Aggregation
+```
 
+- Aggregation: This is a "has-a" relationship where one class contains a reference to another class. It represents a whole-part relationship, but both classes can exist independently.
+
+- **Note**: Aggregation can’t be performed directly on private variables, as private members are meant to be accessed only within their own class.
+
+```
+class Engine:
+    def __init__(self, horsepower):
+        self.horsepower = horsepower
+
+class Car:
+    def __init__(self, make, model, engine):
+        self.make = make
+        self.model = model
+        self.engine = engine  # Aggregation: Car "has-a" Engine
+
+    def car_details(self):
+        return f"{self.make} {self.model} with {self.engine.horsepower} HP engine"
+
+engine = Engine(150)
+car = Car("Toyota", "Corolla", engine)
+print(car.car_details())  # Output: Toyota Corolla with 150 HP engine
+
+```
+
+## Inheritance and Polymophism
+
+
+## Inheritance
+
+Inheritance is a fundamental concept in OOP that allows one class (the child or derived class) to inherit attributes and methods from another class (the parent or base class).
+
+
+### What gets inherited?
+
+```mermaid
+classDiagram
+    class Animal {
+        +make_sound() void
+    }
+    class Dog {
+        +make_sound() void
+    }
+    class Cat {
+        +make_sound() void
+    }
+
+    Animal <|-- Dog
+    Animal <|-- Cat
+```
+
+- Attributes and Methods: The child class inherits all the attributes and methods from the parent class. However, the child class can override these methods or extend them if needed.
+
+- Constructor (__init__ method): The constructor of the parent class is not automatically called in the child class. You need to use super() to call it explicitly if required.
+
+```
+class Parent:
+    def __init__(self):
+        self.parent_attribute = "This is a parent attribute."
+
+    def show_message(self):
+        return "This is a message from the parent class."
+
+class Child(Parent):
+    def __init__(self):
+        super().__init__()  # Calling the parent constructor
+        self.child_attribute = "This is a child attribute."
+
+child_instance = Child()
+print(child_instance.parent_attribute)  # Output: This is a parent attribute.
+print(child_instance.show_message())    # Output: This is a message from the parent class.
+
+```
+- Public and Protected Members: The child class inherits all public and protected members of the parent class. Private members are not directly inherited but can be accessed using getter and setter methods if needed.
 
 

@@ -161,3 +161,157 @@ Examples include calculating a student’s grade point average (where courses ha
 
 ---
 
+## Trimmed Mean
+
+The **Trimmed Mean** is a measure of central tendency calculated by  `removing a certain percentage of the smallest and largest values from a dataset` and then taking the mean of the remaining values. It helps reduce the effect of outliers.
+
+### Numerical Example
+Consider the following dataset:
+
+
+Suppose we want to calculate a 20% trimmed mean. This means removing 20% of the values from both the lower and upper ends of the dataset.
+
+  - **Sort the Data** (if not already sorted):
+    - `10, 15, 20, 25, 30, 35, 100`
+  -  **Remove 20% from Both Ends**:
+     - Since there are 7 values, 20% of 7 is 1.4, which we round to 1.
+     - Remove the smallest and largest value: 10 and 100.
+     - Remaining values: `15, 20, 25, 30, 35`
+
+  - **Calculate the Mean of the Remaining Values**:
+$$ \text{Mean} = \frac{15 + 20 + 25 + 30 + 35}{5} = \frac{125}{5} = 25 $$
+
+### Result
+The 20% trimmed mean of the dataset is **25**.
+
+### Note
+- The percentage of trimming should be chosen based on the nature of the data and how much you want to reduce the impact of outliers.
+
+---
+
+### Measure of Dispersion
+
+**Measures of dispersion** are statistical tools used to describe the spread or variability of a dataset. They help to understand how much the data points differ from the mean or each other, providing insights into the distribution of the data. The most common measures of dispersion include:
+
+1. **Range**: 
+   - The difference between the largest and smallest values in a dataset.
+   - **Formula**:  
+     $$ \text{Range} = \text{Maximum Value} - \text{Minimum Value} $$
+   - Example: If the smallest value is 10 and the largest is 50, the range is $50 - 10 = 40$.
+   - **Cautious**: Range is prone to outliers
+
+2. **Variance**:
+   - A measure of how far each data point in the dataset is from the mean, calculated as the average of the squared differences from the mean.
+   - It is proportional to the spread of the dataset. If a dataset has a large spread, it will also have a large variance. 
+   - **Formula for Population Variance** ($\sigma^2$):  
+     $$ \sigma^2 = \frac{\sum (X_i - \mu)^2}{N} $$
+   - **Formula for Sample Variance** ($s^2$):  
+     $$ s^2 = \frac{\sum (X_i - \bar{X})^2}{n - 1} $$
+   - Where:
+     - $X_i$ = Each individual data point
+     - $\mu$ = Population mean
+     - $\bar{X}$ = Sample mean
+     - $N$ = Total number of data points in the population
+     - $n$ = Total number of data points in the sample
+
+3. **Standard Deviation**:
+   - The square root of the variance, providing a measure of the average distance of each data point from the mean.
+   - **Formula**:  
+     $$ \text{Standard Deviation} = \sqrt{\text{Variance}} $$
+   - It is expressed in the same units as the data, making it easier to interpret.
+
+4. **Interquartile Range (IQR)**:
+   - The difference between the 75th percentile (Q3) and the 25th percentile (Q1) of the dataset, showing the range within which the middle 50% of the data falls.
+   - **Formula**:  
+     $$ \text{IQR} = Q3 - Q1 $$
+   - Useful for identifying the spread of the central portion of a dataset, especially when dealing with outliers.
+
+5. **Mean Absolute Deviation (MAD)**:
+   - The average of the absolute differences between each data point and the mean.
+   - **Formula**:  
+     $$ \text{MAD} = \frac{\sum |X_i - \mu|}{N} $$
+   - Where:
+     - $|X_i - \mu|$ = Absolute difference between each data point and the mean
+     - $N$ = Total number of data points
+
+### Importance
+- **Understanding Variability**: Measures of dispersion give an understanding of the variability within a dataset, which helps to make informed decisions.
+- **Data Comparison**: They are useful for comparing the spread of different datasets.
+- **Identifying Outliers**: Measures like the IQR can help identify outliers in the data.
+
+These measures complement central tendency metrics, providing a more comprehensive understanding of the data distribution.
+
+---
+
+### Standard Deviation
+
+**Standard Deviation** is a measure of dispersion that indicates how spread out the values in a dataset are around the mean. It is calculated as the square root of the variance and is expressed in the same units as the data, making it a useful and interpretable statistic.
+
+### Equation
+For a population:
+$$
+\sigma = \sqrt{\frac{\sum (X_i - \mu)^2}{N}}
+$$
+
+For a sample:
+$$
+s = \sqrt{\frac{\sum (X_i - \bar{X})^2}{n - 1}}
+$$
+
+where:
+- $\sigma$ = Population standard deviation
+- $s$ = Sample standard deviation
+- $X_i$ = Each individual data point
+- $\mu$ = Population mean
+- $\bar{X}$ = Sample mean
+- $N$ = Total number of data points in the population
+- $n$ = Total number of data points in the sample
+
+### Pros of Using Standard Deviation
+1. **Gives a Clear Measure of Variability**:
+   - Standard deviation provides a quantifiable measure of how much the values in a dataset vary or deviate from the mean. This helps in understanding the data distribution and assessing the consistency of the data.
+
+2. **Useful for Normally Distributed Data**:
+   - When data follows a normal distribution, standard deviation becomes a very powerful tool, as it allows you to make precise inferences about the data, such as using the empirical rule (68-95-99.7 rule).
+
+### Cautions When Using Standard Deviation
+1. **Sensitive to Outliers**:
+   - Standard deviation can be greatly affected by outliers or extreme values in the dataset. A few extreme values can inflate the standard deviation, giving a misleading impression of variability.
+
+2. **Not Suitable for Skewed Distributions**:
+   - For datasets with a highly skewed distribution or when the data does not follow a normal distribution, the standard deviation might not accurately represent the variability, and other measures like the interquartile range (IQR) may be more appropriate.
+
+---
+
+### Coefficient of Variation (CV)
+
+The **Coefficient of Variation (CV)** is a standardized measure of dispersion that indicates the ratio of the standard deviation to the mean. It is often expressed as a percentage and is useful for comparing the degree of variation between datasets with different units or means.
+
+### Equation
+$$
+\text{CV} = \frac{\sigma}{\mu} \times 100
+$$
+
+where:
+- $\sigma$ = Standard deviation
+- $\mu$ = Mean of the dataset
+
+### Interpretation
+- A **higher CV** indicates greater variability relative to the mean.
+- A **lower CV** suggests less variability relative to the mean.
+
+### Pros of Using Coefficient of Variation
+1. **Unitless Measure**:
+   - The CV is dimensionless, making it ideal for comparing variability across datasets that have different units or scales.
+
+2. **Relative Comparison**:
+   - CV allows for easy comparison of the relative variability between datasets, even when the means differ significantly.
+
+### Cautions When Using Coefficient of Variation
+1. **Not Suitable for Data with a Mean Close to Zero**:
+   - When the mean is close to zero, the CV can become extremely large or misleading, as the ratio amplifies small variations in the mean.
+
+2. **Assumes a Positive Mean**:
+   - CV is typically used for data with a positive mean, and it is not useful for datasets with negative or zero means.
+
+---
