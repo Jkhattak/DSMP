@@ -375,4 +375,189 @@ print(child_instance.show_message())    # Output: This is a message from the par
 ```
 - Public and Protected Members: The child class inherits all public and protected members of the parent class. Private members are not directly inherited but can be accessed using getter and setter methods if needed.
 
+## Method Overriding 
+
+Method Overriding occurs when a child class provides a specific implementation of a method that is already defined in its parent class. The overridden method in the child class should have the same name, return type, and parameters as the method in the parent class.
+
+
+```
+# Parent class
+class Animal:
+    def make_sound(self):
+        return "Some generic animal sound"
+
+# Child class
+class Dog(Animal):
+    # Overriding the make_sound method
+    def make_sound(self):
+        return "Woof!"
+
+# Child class
+class Cat(Animal):
+    # Overriding the make_sound method
+    def make_sound(self):
+        return "Meow!"
+
+# Using the classes
+animal = Animal()
+dog = Dog()
+cat = Cat()
+
+print(animal.make_sound())  # Output: Some generic animal sound
+print(dog.make_sound())     # Output: Woof!
+print(cat.make_sound())     # Output: Meow!
+```
+
+## Super Keyword
+
+### `super` Keyword in Python
+
+The `super` keyword in Python is used to call a method from the parent class. It is commonly used to call the parent class’s constructor or to access methods that have been overridden in a child class.
+
+---
+
+### Using `super` in Python
+
+#### 1. Calling the Parent Class Constructor
+When you create a constructor (`__init__`) in a child class and still want to call the parent class’s constructor, you use `super()`.
+
+```python
+class Animal:
+    def __init__(self, species):
+        self.species = species
+        print(f"Animal created: {self.species}")
+
+class Dog(Animal):
+    def __init__(self, name):
+        # Call the parent class constructor
+        super().__init__("Dog")
+        self.name = name
+        print(f"Dog created: {self.name}")
+
+my_dog = Dog("Buddy")
+# Output:
+# Animal created: Dog
+# Dog created: Buddy
+```
+
+#### 2. Calling Overridden Methods
+
+If a child class overrides a method from the parent class, you can still call the parent class’s version of the method using super().
+
+```
+class Animal:
+    def make_sound(self):
+        return "Some generic animal sound"
+
+class Dog(Animal):
+    def make_sound(self):
+        # Call the parent class's make_sound method
+        parent_sound = super().make_sound()
+        return f"{parent_sound} and Woof!"
+
+dog = Dog()
+print(dog.make_sound())  # Output: Some generic animal sound and Woof!
+
+```
+
+### How super Works
+
+- Order of Resolution: The super() function uses the method resolution order (MRO) to determine the parent class to call. This is especially useful in complex inheritance hierarchies.
+- Multiple Inheritance: In cases of multiple inheritance, super() helps to ensure that the parent class is called in the correct order, avoiding repetition.
+
+### Benefits of Using super
+
+-Avoid Hardcoding Parent Class Names: super() makes your code more maintainable and flexible.
+- Support for Multiple Inheritance: super() properly handles the method resolution order in the case of multiple inheritance.
+
+---
+
+## Types of Inheritance 
+
+```mermaid
+classDiagram
+    class A {
+        +method()
+    }
+
+    class B {
+        +method()
+    }
+
+    class C {
+        +method()
+    }
+
+    class D {
+        +method()
+    }
+
+    class E {
+        +method()
+    }
+
+    %% Single Inheritance
+    A <|-- B : Single Inheritance
+
+    %% Multilevel Inheritance
+    B <|-- C : Multilevel Inheritance
+
+    %% Hierarchical Inheritance
+    A <|-- D : Hierarchical Inheritance
+    A <|-- E : Hierarchical Inheritance
+
+    %% Multiple Inheritance
+    B <|-- C : Multiple Inheritance
+    D <|-- C : Multiple Inheritance
+```
+
+- `Single Inheritance:` A single child class (B) inherits from a single parent class (A).
+- `Multilevel Inheritance:` A chain of inheritance where class C inherits from class B, which in turn inherits from class A.
+- `Hierarchical Inheritance:` Multiple child classes (D and E) inherit from the same parent class (A).
+- `Multiple Inheritance:` A single child class (C) inherits from multiple parent classes (B and D).
+
+## Polymorphism in Python
+
+Polymorphism is a core concept of Object-Oriented Programming that allows objects of different classes to be treated as objects of a common superclass. It enables the same interface to be used for different underlying forms (data types).
+
+---
+
+### Key Points
+1. **Polymorphism** allows methods in different classes to have the same name but different implementations.
+2. **Dynamic Typing** in Python enables polymorphism, allowing a function to use objects of different types as long as they have the required method or attribute.
+
+---
+
+### Types of Polymorphism
+1. **Method Overloading** (Not natively supported in Python): Having multiple methods in the same class with the same name but different parameters.
+2. **Method Overriding**: Redefining a method in the child class that is already defined in the parent class.
+3. **Operator Overloading**: Using the same operator for different operations, depending on the operands.
+
+---
+
+### Example: Method Overriding
+```python
+class Animal:
+    def make_sound(self):
+        return "Some generic animal sound"
+
+class Dog(Animal):
+    def make_sound(self):
+        return "Woof!"
+
+class Cat(Animal):
+    def make_sound(self):
+        return "Meow!"
+
+# Using Polymorphism
+animals = [Dog(), Cat(), Animal()]
+
+for animal in animals:
+    print(animal.make_sound())
+# Output:
+# Woof!
+# Meow!
+# Some generic animal sound
+```
+
 
