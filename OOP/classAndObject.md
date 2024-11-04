@@ -560,4 +560,67 @@ for animal in animals:
 # Some generic animal sound
 ```
 
+## Abstraction in Python
 
+### What is Abstraction?
+Abstraction is one of the fundamental concepts of Object-Oriented Programming (OOP) that is used to hide the complexity of a system and only expose the necessary features. It focuses on what an object does rather than how it does it.
+
+In Python, abstraction can be achieved using:
+1. **Abstract Classes**
+2. **Abstract Methods**
+
+---
+
+### Abstract Classes
+An **abstract class** is a class that cannot be instantiated and is designed to be a blueprint for other classes. It can have abstract methods (methods declared but not implemented) as well as concrete methods (implemented methods).
+
+To create an abstract class in Python, you use the `abc` module (Abstract Base Classes).
+
+```python
+from abc import ABC, abstractmethod
+
+# Abstract class
+class Shape(ABC):
+    @abstractmethod
+    def area(self):
+        pass
+
+    @abstractmethod
+    def perimeter(self):
+        pass
+
+# Concrete class
+class Rectangle(Shape):
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+
+    def area(self):
+        return self.width * self.height
+
+    def perimeter(self):
+        return 2 * (self.width + self.height)
+
+# Creating an object of the concrete class
+rect = Rectangle(10, 5)
+print("Area:", rect.area())          # Output: Area: 50
+print("Perimeter:", rect.perimeter())  # Output: Perimeter: 30
+```
+
+### Key Points
+
+- `Cannot Instantiate Abstract Class:` You cannot create an object of an abstract class directly.
+`shape = Shape()  # This will raise an error`
+
+- `Must Implement Abstract Methods:` Any concrete subclass must implement all the abstract methods defined in the abstract class.
+
+### Why Use Abstraction?
+
+ -   `Simplifies Complex Systems:` By showing only the essential details, abstraction reduces complexity and improves the readability of the code.
+ -   `Increases Flexibility:` You can define a common interface for a group of related classes.
+ -   `Enforces Implementation:` Abstract methods ensure that subclasses implement the methods defined in the abstract class.
+  
+### Use Cases of Abstraction
+
+ -   `Frameworks and Libraries:` Abstraction is commonly used in frameworks and libraries to provide a clear and simple interface for users.
+ -   `Real-World Example:` Consider a vehicle class that provides an abstract method start_engine(). Different types of vehicles (e.g., cars, bikes, planes) will implement start_engine() differently, but users don't need to worry about those details.

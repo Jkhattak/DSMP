@@ -315,3 +315,267 @@ where:
    - CV is typically used for data with a positive mean, and it is not useful for datasets with negative or zero means.
 
 ---
+
+## Bivariate Analysis 
+
+```mermaid
+graph TD
+  A[Bivariate Analysis] --> B[Continuous vs Continuous]
+  A --> C[Continuous vs Categorical]
+  A --> D[Categorical vs Categorical]
+  
+  B --> E[Scatter Plot]
+  B --> F[Correlation Coefficient]
+  B --> G[Regression Analysis]
+
+  C --> H[Box Plot]
+  C --> I[Violin Plot]
+  C --> J[ANOVA]
+
+  D --> K[Contingency Table]
+  D --> L[Chi-Square Test]
+  D --> M[Stacked Bar Chart]
+```
+
+
+---
+## Working with Categorical Tables
+
+### 1. Categorical Frequency Distribution Table
+
+**Definition**: A frequency distribution table for categorical data lists each category and the number of occurrences (frequency) in the dataset.
+
+**Example Table**:
+| Category       | Frequency |
+|----------------|-----------|
+| Apples         | 30        |
+| Bananas        | 25        |
+| Oranges        | 20        |
+| Grapes         | 15        |
+
+**Types of Graphs**:
+- **Bar Chart**: Shows the frequency of each category using bars.
+- **Pie Chart**: Displays the proportion of each category in a circular chart.
+- **Pareto Chart**: A bar chart that shows frequencies in descending order and includes a line for cumulative frequency.
+
+---
+
+### 2. Relative Frequency Distribution Table
+
+**Definition**: A relative frequency table shows the proportion or percentage of the total number of observations that fall into each category.
+
+**Example Table**:
+| Category       | Frequency | Relative Frequency |
+|----------------|-----------|--------------------|
+| Apples         | 30        | 0.30 (30%)         |
+| Bananas        | 25        | 0.25 (25%)         |
+| Oranges        | 20        | 0.20 (20%)         |
+| Grapes         | 15        | 0.15 (15%)         |
+
+**Calculation**:  
+$$
+\text{Relative Frequency} = \frac{\text{Frequency of the Category}}{\text{Total Frequency}}
+$$
+
+**Types of Graphs**:
+- **Bar Chart**: Can be modified to show proportions instead of raw frequencies.
+- **Pie Chart**: Effective for visualizing relative frequencies.
+- **Stacked Bar Chart**: Used for comparing proportions across multiple groups.
+
+---
+
+### 3. Cumulative Frequency Distribution Table
+
+**Definition**: A cumulative frequency table shows the sum of frequencies for all categories up to and including the current category. It helps in understanding how frequencies accumulate over categories.
+
+**Example Table**:
+| Category       | Frequency | Cumulative Frequency |
+|----------------|-----------|----------------------|
+| Apples         | 30        | 30                   |
+| Bananas        | 25        | 55                   |
+| Oranges        | 20        | 75                   |
+| Grapes         | 15        | 90                   |
+
+**Calculation**:  
+- Cumulative frequency is the sum of the frequency of the current category and all previous frequencies.
+
+**Types of Graphs**:
+- **Cumulative Frequency Graph (Ogive)**: A line graph that shows the cumulative frequency distribution.
+- **Step Chart**: An alternative way to represent cumulative frequencies.
+
+---
+
+### Summary of Graph Types
+1. **Categorical Frequency Distribution**:
+   - Bar Chart
+   - Pie Chart
+   - Pareto Chart
+
+2. **Relative Frequency Distribution**:
+   - Bar Chart (for proportions)
+   - Pie Chart
+   - Stacked Bar Chart
+
+3. **Cumulative Frequency Distribution**:
+   - Cumulative Frequency Graph (Ogive)
+   - Step Chart
+
+---
+
+## Numerical Frequency Distribution Table
+
+**Definition**: A frequency distribution table for numerical data organizes the data into intervals (bins) and shows the number of data points that fall within each interval. It helps to understand how the data is distributed across the range.
+
+**Example Table**:
+Consider a dataset representing the ages of 30 individuals:
+
+
+We can create a frequency distribution table with age intervals of 10 years:
+
+| Age Interval | Frequency |
+|--------------|-----------|
+| 20 - 29      | 3         |
+| 30 - 39      | 3         |
+| 40 - 49      | 3         |
+| 50 - 59      | 3         |
+| 60 - 69      | 3         |
+| 70 - 79      | 3         |
+| 80 - 89      | 3         |
+| 90 - 99      | 3         |
+
+---
+
+### Histogram
+
+**Definition**: A **Histogram** is a graphical representation of a frequency distribution for numerical data. It uses adjacent bars to show the frequency of data points in each interval, where the height of each bar represents the frequency.
+
+### Shapes of Histograms
+
+1. **Bell-Shaped (Normal Distribution)**:
+   - Symmetrical with a single peak at the center.
+   - Most data points cluster around the mean.
+   - **Example**: Heights of individuals in a large population.
+
+2. **Uniform Distribution**:
+   - All intervals have approximately the same frequency.
+   - Data points are evenly distributed across the range.
+   - **Example**: Rolling a fair six-sided die multiple times.
+
+3. **Bimodal Distribution**:
+   - Two distinct peaks.
+   - Indicates the presence of two different groups within the data.
+   - **Example**: Test scores from two different classes.
+
+4. **Skewed Right (Positively Skewed)**:
+   - Tail extends to the right.
+   - Most data points are concentrated on the left.
+   - **Example**: Income distribution in many economies.
+
+5. **Skewed Left (Negatively Skewed)**:
+   - Tail extends to the left.
+   - Most data points are concentrated on the right.
+   - **Example**: Age at retirement in a population.
+
+6. **Multimodal Distribution**:
+   - More than two peaks.
+   - Indicates multiple groups or modes within the data.
+   - **Example**: Test scores from students of different proficiency levels.
+
+### Visual Examples
+
+Below are visual representations of different histogram shapes:
+
+- **Bell-Shaped Histogram**:
+- 
+  ![Bell-Shaped Histogram](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fvt-vtwa-assets.varsitytutors.com%2Fvt-vtwa%2Fuploads%2Fproblem_question_image%2Fimage%2F23829%2FNormal.png&f=1&nofb=1&ipt=21e5ed89e41bfee2619556ead73e1262aa94e3078c69d6d7ec480ac8d4edd6ad&ipo=images)
+
+- **Uniform Histogram**:
+- 
+  ![Uniform Histogram](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi1.wp.com%2Fwww.mathbootcamps.com%2Fwp-content%2Fuploads%2Funiform-histogram.jpg%3Fresize%3D576%252C384&f=1&nofb=1&ipt=f1e03b15fdea3ac12a7814a006f78c497d356dd02db53dc4db9ea45e61cfaf08&ipo=images)
+
+- **Bimodal Histogram**:
+- 
+  ![Bimodal Histogram](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi0.wp.com%2Fstatisticsbyjim.com%2Fwp-content%2Fuploads%2F2022%2F03%2FBimodal_histogram.png%3Fresize%3D576%252C384%26ssl%3D1&f=1&nofb=1&ipt=3c468409477b9d7fd5affb5a39de2bf6a8fc74457194db58944e8d9364510ee5&ipo=images)
+
+- **Skewed Right Histogram**:
+- 
+  ![Skewed Right Histogram](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fassets-global.website-files.com%2F621e95f9ac30687a56e4297e%2F64adcace377905a651ca4910_V2_1681696383676_ac795440-2535-4d6f-b94b-cf447b166ae4_HIGH_RES.png&f=1&nofb=1&ipt=bceb5465f30bdc3a5261830bab0e80f8c01fd303fa611004814991cf6517af36&ipo=images)
+
+- **Skewed Left Histogram**:
+- 
+  ![Skewed Left Histogram](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fassets-global.website-files.com%2F621e95f9ac30687a56e4297e%2F64adca5b377905a651c9e574_V2_1681696470397_c24a2161-6502-420e-bd18-c8a3837f3651_HIGH_RES.png&f=1&nofb=1&ipt=b856d4309d8cbae03c355d1e1567c87f8eb13e559ca89eeaacadec2d4d9945e4&ipo=images)
+
+- **Multimodal Histogram**:
+- 
+  ![Multimodal Histogram](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatisticsbyjim.com%2Fwp-content%2Fuploads%2F2019%2F02%2Fmultimodal_histogram.png&f=1&nofb=1&ipt=b42da3eabc8b9d83f3e506c2366274b3a022ef74af92918eaac59953fc6c30e1&ipo=images)
+
+### Notes
+- **Histogram Shapes**: Understanding the shape of a histogram is crucial for interpreting the underlying data distribution.
+- **Graph Types**: The shape of a histogram can provide insights into the data's characteristics, such as whether it is normally distributed, skewed, or contains multiple peaks.
+
+---
+
+## Bivariate Analysis: Categorical vs. Categorical 
+
+```mermaid
+graph TD
+  A[Bivariate Analysis] --> B[Categorical vs Categorical]
+  
+  B --> C[Contingency Table]
+  B --> D[Chi-Square Test]
+  B --> E[Stacked Bar Chart]
+  B --> F[Clustered Bar Chart]
+
+```
+
+
+**Categorical vs. Categorical:** This refers to analyzing the relationship between two categorical variables to understand how they are associated or distributed relative to each other.
+
+  - ` Contingency Table:` A table that displays the frequency distribution of two categorical variables and helps identify possible relationships.
+  - ` Chi-Square Test:` A statistical test used to determine if there is a significant association between the two categorical variables.
+  - ` Stacked Bar Chart:` A visual representation where bars are divided into segments to show the distribution of one categorical variable across the levels of another.
+  -  `Clustered Bar Chart:` Another type of bar chart that groups bars of different categories side-by-side to compare frequencies or proportions.
+
+---
+
+## Bivariate Analysis: Numerical vs. Numerical Diagram 
+
+```mermaid
+graph TD
+  A[Bivariate Analysis] --> B[Numerical vs Numerical]
+  
+  B --> C[Scatter Plot]
+  B --> D[Correlation Analysis]
+  B --> E[Regression Analysis]
+  B --> F[Line Graph]
+
+```
+
+**`Numerical vs. Numerical:`** This type of bivariate analysis explores the relationship between two numerical variables.
+
+  - ` Scatter Plot:` A graph that shows individual data points plotted in a two-dimensional space, allowing you to visualize any potential correlation or pattern between the variables.
+  - ` Correlation Analysis:` A statistical method used to measure the strength and direction of the relationship between two numerical variables. The correlation coefficient (r) ranges from -1 to 1.
+  - ` Regression Analysis:` A technique used to model and analyze the relationship between the independent (predictor) variable and the dependent (response) variable, often used for prediction.
+  - ` Line Graph:` Useful for visualizing the relationship between two numerical variables over time or a continuous range, especially when one variable is dependent on the other.
+
+---
+
+## Bivariate Analysis: Categorical vs. Numerical Diagram 
+
+```mermaid
+graph TD
+  A[Bivariate Analysis] --> B[Categorical vs Numerical]
+  
+  B --> C[Box Plot]
+  B --> D[Violin Plot]
+  B --> E[Bar Chart with Means]
+  B --> F[ANOVA]
+
+```
+
+**`Categorical vs. Numerical:`** This type of bivariate analysis examines the relationship between a categorical variable and a numerical variable.
+
+  -  `Box Plot:` A graphical representation that shows the distribution of the numerical variable across the different categories. It displays the median, quartiles, and potential outliers for each category.
+  -  `Violin Plot:` Similar to a box plot but also includes a density plot, providing more information about the distribution of the numerical variable within each category.
+  -  `Bar Chart with Means:` A bar chart that displays the mean value of the numerical variable for each category, often used to compare averages across groups.
+  -  `ANOVA (Analysis of Variance):` A statistical test used to determine if there are significant differences in the means of the numerical variable across multiple categories.
