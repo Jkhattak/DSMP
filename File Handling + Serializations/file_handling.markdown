@@ -157,3 +157,108 @@ When you open a file using `open()`, it’s essential to close the file after yo
 with open("filename", "mode") as file:
     # Perform file operations
 ```
+
+### Tell and Seek Function 
+
+- `seek(offset, whence):` Moves the file pointer to a specified byte position. The offset indicates how many bytes to move, and whence defines the reference point (start, current position, or end of file). Default is 0 (start of the file).
+
+- `tell():` Returns the current byte position of the file pointer within the file. This is useful for checking where the pointer is located after using seek() or reading data.
+
+```python
+with open("example.txt", "rb") as file:
+    file.seek(5)              # Move pointer to byte 5
+    print(file.tell())        # Output current position (should be 5)
+    
+    data = file.read(10)      # Read next 10 bytes from position 5
+    print(data)               # Print the data read
+    print(file.tell())        # Output new position after read
+```
+
+### Problems with working in text mode
+
+- Can't work with binary files like `images`
+- Not good for other data types like int/float/list/tuples
+
+## Working with Binary Files
+
+```python
+with open('Capture.PNG', 'rb') as f: #READ BINARY
+    with open('screenshot_copy.jpg', 'wb') as wf: #WRITE BINARY
+        wf.write(f.read()) #WRITE BACK TO COPY
+```
+
+### Working with Other Data Types
+
+- `Text` files can only have `string` data type. 
+- `Must` convert string to `differe data types` to work with `non-string` data type. 
+
+
+## Serialization and Deserialization 
+
+`Serialization` and `Deserialization` are processes used to convert data structures or objects into a format that can be stored or transmitted, and then reconstruct them back into the original structure or object.
+
+### Serialization
+
+Serialization is the process of converting a Python object (such as a list, dictionary, or custom class instance) into a format that can be easily stored or transmitted. Common formats include binary, JSON, or XML.
+
+- **Purpose**: To save the object state to a file, database, or to send it over a network.
+- **Common Modules**: pickle (for binary serialization), json (for JSON serialization).
+
+### Deserialization
+
+`Deserialization` is the reverse process, where the serialized data is read from a file or other storage medium and reconstructed back into a Python object.
+
+- **Purpose**: To retrieve the original object from the stored format.
+- **Common Modules**: pickle (binary deserialization), json (JSON deserialization).
+
+`JSON`: Javascript on notation
+
+
+```python
+import json
+
+data = {"name": "Alice", "age": 30}
+
+# Serialization to JSON format
+with open("data.json", "w") as file:
+    json.dump(data, file)
+
+# Deserialization from JSON format
+with open("data.json", "r") as file:
+    loaded_data = json.load(file)
+    print(loaded_data)  # Output: {'name': 'Alice', 'age': 30}
+```
+
+### Serialization & Deserialization of Tuples
+
+When it comes it `**tuples**`, the json will **`always`** write it as a list and retrieve it as a list
+
+## Pickling 
+
+**`Picking`** is the process whereby a python object hierarchy is converted into a byte stream, and **`unpickling`** is the inverse operation, whereby a byte stream (from a binary file or bytes-like object) is converted back into an object hierarchy. 
+
+```python
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+# Create an instance of Person
+person = Person("Alice", 30)
+
+# Pickling the custom object
+with open("person.pkl", "wb") as file:
+    pickle.dump(person, file)
+
+# Unpickling the custom object
+with open("person.pkl", "rb") as file:
+    loaded_person = pickle.load(file)
+    print(loaded_person.name, loaded_person.age)  # Output: Alice 30
+```
+
+**`Pickle`**: Best for Python-specific, complex objects but unsafe for untrusted sources.
+**`JSON`**: Ideal for simple, cross-platform data sharing and is safer to use.
+
+
+
+
