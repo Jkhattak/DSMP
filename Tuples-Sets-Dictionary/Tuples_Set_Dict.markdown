@@ -1,9 +1,10 @@
 # Tuples - Sets - Dictionary
+
 ---
 
 ## Tuple
 
-A *tuple& in Python is similar to a list. The difference between the two is that we cannot change the elements of a tuple once it is assigned, whereas we can change the elements of a list.
+A *tuple* in Python is similar to a list. The difference between the two is that we cannot change the elements of a tuple once it is assigned, whereas we can change the elements of a list.
 
 In short, a tuple is an immutable list. A tuple cannot be changed in any way once it is created.
 
@@ -15,158 +16,165 @@ In short, a tuple is an immutable list. A tuple cannot be changed in any way onc
 
 Single item tuple **must have a comma** after the item
 
-```
+```python
 t = (1)
 print(type(t))
 
---output--
+# output
 <class 'int'>
 ```
-```
+
+```python
 # Single item tuple
+
 t = (1,)
 print(t)
 
---output--
+# output
 (1,)
-
 ```
-```
+```python
 # Tuple within a tuple
 t = (1,2,3,4,(5,6))
-
 print(type(t))
 
---output--
+# output
 <class 'tuple'>
 ```
 
 ### Accessing item within tuple
 
-- Indexing
-- Slicing 
+-    Indexing
+-    Slicing
 
-```
+```python
 t = (1,2,3,4,(5,6))
 print(t[3])
 
---output
+# output
 4
 ```
-```
+```python
 t = (1,2,3,4,(5,6))
 print(t[0:3])
 
---output--
+# output
 (1, 2, 3)
 ```
-
-```
+```python
 t = (1,2,3,4,(5,6))
 print(t[-1][1])
 
---output--
+# output
 6
 ```
-## Editing in tuples 
 
-Tuples can not be modified once created
+### Editing in tuples
 
-```
+- Tuples cannot be modified once created.
+
+```python
 t = (1,2,3,4,5)
 t[0] = 100
 
---output--
-TypeError                                 Traceback (most recent call last)
-Cell In[12], line 2
-      1 t = (1,2,3,4,5)
-----> 2 t[0] = 100
-
+# output
 TypeError: 'tuple' object does not support item assignment
 ```
 
 ### Del keyword
 
-The whole tuple can be deleted; however, a single item in tuple cannot be deleted. 
+- The whole tuple can be deleted; however, a single item in a tuple cannot be deleted.
 
-```
+```python
 t = (1,2,3,4,5)
 del(t[0])
 
---output--
-
-TypeError                                 Traceback (most recent call last)
-Cell In[14], line 2
-      1 t = (1,2,3,4,5)
-----> 2 del(t[0])
-
+# output
 TypeError: 'tuple' object doesn't support item deletion
 ```
-## Operations on Tuple
 
-- Addition
-- Multiplication
-- Membership
-- Iteration
+### Operations on Tuple
 
-```
+-    Addition
+-    Multiplication
+-    Membership
+-    Iteration
+
+```python
 t = (1,2,3,4,5)
 t2 = (6,7,8,9,10)
+print(t + t2)
 
-print(t+t2)
-
---output--
+# output
 (1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 ```
-```
-#membership
+```python
+# membership
 t = (1,2,3,4,5)
-
 1 in t
 ```
-```
-#iteration
+```python
+# iteration
 t = (1,2,3,4,5)
-
 for i in t:
     print(i)
 ```
 
-## Tuple functions
-- len
-- min
-- max
-- sorted
-- sum
-- Count
-- Index
-```
-t = (1,2,3,4,5)
+### Tuple functions
 
+- `len`
+- `min`
+- `max`
+- `sorted`
+- `sum`
+- `count`
+- `index`
+
+```python
+# len
+t = (1,2,3,4,5)
+len(t)
+
+# output 
+5
+```
+
+```python
+# count
+t = (1,2,3,3,3,4,5,5)
+t.count(3)
+
+# output
+3
+```
+
+```python
+t = (1,2,3,4,5)
 sorted(t)
 
---output--
+# output
 [1, 2, 3, 4, 5]
 ```
-```
-#index
+```python
+# index
 t = (1, 2, 3, 4, 5)
-
 t.index(5)
 
---output--
+# output
 4
+```
 
-```
 ### Main difference between lists and tuples
-- Syntax
-- Mutability
-- Speed (`Tuples` are `faster` than `list`)
-- Memory (`Tuples` takes `less memory` compared to `list`)
-- Built in functionality
-- Error Prone
-- Usability
-```
+
+- `Syntax`
+- `Mutability`
+- `Speed (Tuples are faster than lists)`
+- `Memory (Tuples take less memory compared to lists)`
+- `Built-in functionality`
+- `Error Prone`
+- `Usability`
+
+```python
 # Error prone
 a = [1,2,3]
 b = a
@@ -174,62 +182,67 @@ a.append(4)
 print(a)
 print(b)
 
---output--
+# output
 [1, 2, 3, 4]
 [1, 2, 3, 4]
 ```
-```
+
+```python
 a = (1,2,3)
 b = a
 a = a + (4,)
 print(a)
 print(b)
 
---output--
+# output
 (1, 2, 3, 4)
 (1, 2, 3)
 ```
 
 ### Tuple unpacking
-```
-a,b,c=(1,2,3)
-print(a,b,c)
+```python
+a, b, c = (1,2,3)
+print(a, b, c)
 
---output--
+# output
 1 2 3
 ```
-```
-#Swaping variables
+
+```python
+# Swapping variables
 a = 1
-b=2
-a,b = b,a
-print('a',a)
+b = 2
+a, b = b, a
+print('a', a)
 print('b', b)
 
---output
+# output
 a 2
 b 1
 ```
-```
-a,b,*other=(1,2,3,4,5)
 
-print('a is', a,',b is', b,',and others are',other)
+```python
+a, b, *other = (1, 2, 3, 4, 5)
+print('a is', a, ', b is', b, ', and others are', other)
 
---output--
-a is 1 ,b is 2 ,and others are [3, 4, 5]
+# output
+a is 1 , b is 2 , and others are [3, 4, 5]
+
 ```
 
-### Zipping tuples
-```
+ ### Zipping tuples
+
+```python
 a = (1,2,3,4)
 b = (5,6,7,8)
+list(zip(a, b))
 
-list(zip(a,b))
-
---output--
+# output
 [(1, 5), (2, 6), (3, 7), (4, 8)]
 ```
-## Sets
+
+
+# Sets
 A set is an unordered collection of items. Every set element is unique (no duplicates) and must be immutable (cannot be changed); However, a set itself is mutable. We can add or remove items from it. 
 
 Set can also be used to perform mathematical set operations like union, intersection, symmetric difference, etc

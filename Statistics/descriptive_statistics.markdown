@@ -579,3 +579,572 @@ graph TD
   -  `Violin Plot:` Similar to a box plot but also includes a density plot, providing more information about the distribution of the numerical variable within each category.
   -  `Bar Chart with Means:` A bar chart that displays the mean value of the numerical variable for each category, often used to compare averages across groups.
   -  `ANOVA (Analysis of Variance):` A statistical test used to determine if there are significant differences in the means of the numerical variable across multiple categories.
+
+# Quantiles and Percentiles
+
+## **Quantiles**
+Quantiles are points that divide a dataset into equal-sized, consecutive intervals. They are used to understand the distribution of data.
+
+### **Key Points**
+- Quantiles divide data into **`q` equal parts**.
+- Common quantiles include:
+  - **Quartiles**: Divide data into 4 parts (25% intervals).
+  - **Deciles**: Divide data into 10 parts (10% intervals).
+  - **Percentiles**: Divide data into 100 parts (1% intervals).
+- Quantiles help identify the spread and skewness of the data.
+
+### **Quartiles**
+Quartiles are a specific case of quantiles dividing the dataset into four equal parts:
+1. **Q1 (First Quartile)**: The value below which 25% of the data falls.
+2. **Q2 (Second Quartile or Median)**: The value below which 50% of the data falls.
+3. **Q3 (Third Quartile)**: The value below which 75% of the data falls.
+
+### Things to remember while calculating these measures:
+- Data should be sorted from `low to high`
+- You are basically finding the `location of an observation` 
+- They are `not actual values in the data` 
+- All other tiles can be easily derived from `Percentile`
+
+#### **Formula to Find a Quartile**
+$$ Q_k = \text{Value at position } \frac{k \times (n + 1)}{4} $$
+- \( k \): The quartile number (1, 2, or 3).
+- \( n \): Total number of data points.
+
+---
+
+## **Percentiles**
+Percentiles are a type of quantile that divide the dataset into 100 parts, each representing 1% of the distribution.
+
+A **percentile** is a statistical measure that represents the percentage of observations in a dataset that fall below a particular value. For example, the **75th percentile** is the value below which **75%** of the observations in the dataset fall.
+
+### **Key Points**
+- **Pth Percentile**: The value below which \( P\% \) of the data falls.
+  - Example: The 90th percentile (P90) means 90% of data is below that value.
+- Percentiles are commonly used in:
+  - **Test scores**: To show performance relative to peers.
+  - **Descriptive statistics**: Summarizing large datasets.
+
+### **Formula to Find a Percentile**
+$$ P_k = \text{Value at position } \frac{k}{100} \times (n + 1) $$
+- \( k \): Percentile number (1-100).
+- \( n \): Total number of data points.
+
+### **Percentile Example**
+
+#### Dataset:
+Sort the dataset first in ascending
+$$[5, 10, 15, 20, 25, 30, 35, 40]$$
+
+#### Goal:
+Find the **90th percentile (P90)**.
+
+#### Steps:
+
+1. **Sort the dataset (if not already sorted):**
+   $$ [5, 10, 15, 20, 25, 30, 35, 40] $$
+
+2. **Calculate the position:**
+   $$
+   \text{Position} = P \times \frac{(n + 1)}{100}
+   $$
+
+   Where:
+   - \( P = 90 \) (percentile value)
+   - \( n = 8 \) (total number of data points)
+
+   Substituting the values:
+   $$
+   \text{Position} = 90 \times \frac{(8 + 1)}{100} = 90 \times \frac{9}{100} = 8.1
+   $$
+
+3. **Interpolate to find the value:**
+   - The position is \( 8.1 \), so we consider the 8th value (40) and interpolate beyond it.
+   - The interpolation formula is:
+     $$
+     P_{90} = \text{Value at Position 8} + (\text{Fractional Part}) \times (\text{Next Value} - \text{Value at Position 8})
+     $$
+
+     Since there is no next value beyond 40:
+     $$
+     P_{90} = 40
+     $$
+
+#### Final Result:
+The **90th percentile** is:
+$$
+P_{90} = 40
+$$
+
+
+
+---
+
+## **Relationship Between Quantiles and Percentiles**
+- Percentiles are **quantiles** where \( q = 100 \).
+- Quartiles (4 equal parts) are equivalent to:
+  - 25th percentile (Q1)
+  - 50th percentile (Q2, Median)
+  - 75th percentile (Q3)
+
+---
+
+## **How to Calculate Quantiles and Percentiles**
+1. **Sort the Dataset**: Arrange data in ascending order.
+2. **Determine the Position**:
+   - For quantiles: Divide the dataset into $q$ equal parts.
+   - For percentiles: Multiply the percentile number $k$ by $\frac{(n + 1)}{100}$.
+3. **Locate the Value**:
+   - If the position is an integer, take the value at that index.
+   - If not, interpolate between the nearest values.
+
+### **Interpolation Formula**
+If $P_k$ falls between two indices $i$ and $i+1$:
+$$
+P_k = \text{Value at } i + (\text{Fractional part}) \times (\text{Value at } i+1 - \text{Value at } i)
+$$
+
+---
+
+## **Examples**
+### Example 1: Finding the Median (50th Percentile)
+**Dataset**: [10, 20, 30, 40, 50]
+
+- Median Position:
+  $$
+  50\% \times (5 + 1) = 3
+  $$
+- Median Value: Value at Position 3 = **30**.
+
+---
+
+### Example 2: Finding the 90th Percentile
+**Dataset**: [5, 10, 15, 20, 25, 30]
+
+- Position:
+  $$
+  90\% \times (6 + 1) = 6.3
+  $$
+- Interpolating between Value at Position 6 and Position 7:
+  $$
+  P_{90} = 30 + 0.3 \times (35 - 30) = 31.5
+  $$
+- 90th Percentile = **31.5**.
+
+
+---
+
+## **Visualizing Quantiles and Percentiles**
+- Quantiles are often visualized using:
+  - **Box Plots**: Show quartiles (Q1, Median, Q3) and outliers.
+  - **Cumulative Distribution Function (CDF)**: Shows percentiles.
+
+# **Five-Number Summary**
+
+The **Five-Number Summary** provides a concise description of a dataset's distribution. It consists of:
+
+1. **Minimum**: The smallest value in the dataset.
+2. **First Quartile (Q1)**: The value below which 25% of the data falls.
+3. **Median (Q2)**: The middle value of the dataset (50th percentile).
+4. **Third Quartile (Q3)**: The value below which 75% of the data falls.
+5. **Maximum**: The largest value in the dataset.
+
+![alt text](5-number-summary-explained-3892409429.png)
+---
+
+## **Steps to Calculate the Five-Number Summary**
+
+1. **Sort the Dataset**: Arrange the data in ascending order.
+2. **Identify the Minimum and Maximum**: Select the smallest and largest values, respectively.
+3. **Calculate Q1 (First Quartile)**:
+   - Q1 is the median of the lower half (below the overall median) of the dataset.
+4. **Calculate Q2 (Median)**:
+   - The median is the middle value if the dataset has an odd number of observations.
+   - If the dataset has an even number of observations, the median is the average of the two middle values.
+5. **Calculate Q3 (Third Quartile)**:
+   - Q3 is the median of the upper half (above the overall median) of the dataset.
+
+---
+
+## **Example**
+
+**Dataset**: [7, 15, 36, 39, 40, 41, 42, 43, 46, 49]
+
+1. **Sort the Dataset**: 
+   $$ [7, 15, 36, 39, 40, 41, 42, 43, 46, 49] $$
+
+2. **Minimum**: 
+   $$ 7 $$
+
+3. **Maximum**: 
+   $$ 49 $$
+
+4. **Median (Q2)**:
+   - Number of observations \( n = 10 \) (even).
+   - Median is the average of the 5th and 6th values:
+     $$
+     Q2 = \frac{40 + 41}{2} = 40.5
+     $$
+
+5. **First Quartile (Q1)**:
+   - Lower half: [7, 15, 36, 39, 40]
+   - Median of the lower half:
+     $$
+     Q1 = 36
+     $$
+
+6. **Third Quartile (Q3)**:
+   - Upper half: [41, 42, 43, 46, 49]
+   - Median of the upper half:
+     $$
+     Q3 = 43
+     $$
+
+---
+
+## **Final Five-Number Summary**
+- **Minimum**: 7
+- **Q1**: 36
+- **Median (Q2)**: 40.5
+- **Q3**: 43
+- **Maximum**: 49
+
+---
+
+## **Applications**
+- **Box Plots**: Visualize the Five-Number Summary with whiskers and outliers.
+- **Descriptive Statistics**: Summarize the dataset for quick insights.
+- **Outlier Detection**: Identify extreme values using interquartile range (IQR).
+
+---
+
+## **Interquartile Range (IQR)**
+The interquartile range (IQR) is a measure of variability that is based on the five-number summary of a dataset. Specifically, the IQR is defined as a the difference between the third quartile (Q3) and the first quartile (Q1) of a datase. 
+
+The IQR is the range between the first and third quartiles:
+$$
+\text{IQR} = Q3 - Q1
+$$
+
+For the example dataset:
+$$
+\text{IQR} = 43 - 36 = 7
+$$
+
+Outliers are typically defined as values below:
+$$
+Q1 - 1.5 \times \text{IQR}
+$$
+or above:
+$$
+Q3 + 1.5 \times \text{IQR}
+$$
+
+# **Boxplot**
+
+A **boxplot** (or box-and-whisker plot) is a graphical representation of the distribution of a dataset based on the **five-number summary**. It is used to visualize the central tendency, spread, and potential outliers in the data.
+
+---
+
+## **Components of a Boxplot**
+
+1. **Minimum**: The smallest data point within 1.5 times the IQR below Q1.
+2. **First Quartile (Q1)**: The lower edge of the box, representing the 25th percentile.
+3. **Median (Q2)**: The line inside the box, representing the 50th percentile.
+4. **Third Quartile (Q3)**: The upper edge of the box, representing the 75th percentile.
+5. **Maximum**: The largest data point within 1.5 times the IQR above Q3.
+6. **Whiskers**:
+   - Extend from the box to the smallest and largest values within 1.5 times the IQR.
+7. **Outliers**:
+   - Data points outside the whiskers are marked as individual dots or symbols.
+
+![alt text](1_0MPDTLn8KoLApoFvI0P2vQ-3702459769.png)
+---
+
+## Benefits of a Boxplot
+- Easy way to see the distribution of data
+- Tells about skewness of data
+- Can identify outliers
+- Compare 2 categories of data
+
+
+
+## **How to Create a Boxplot**
+
+1. **Calculate the Five-Number Summary**:
+   - Minimum, Q1, Median, Q3, and Maximum.
+2. **Calculate the Interquartile Range (IQR)**:
+   $$
+   \text{IQR} = Q3 - Q1
+   $$
+3. **Determine the Whisker Bounds**:
+   - Lower Bound:
+     $$
+     Q1 - 1.5 \times \text{IQR}
+     $$
+   - Upper Bound:
+     $$
+     Q3 + 1.5 \times \text{IQR}
+     $$
+4. **Identify Outliers**:
+   - Values outside the whisker bounds.
+
+5. **Plot the Box and Whiskers**:
+   - The box spans from Q1 to Q3.
+   - The line inside the box represents the Median (Q2).
+   - Whiskers extend to the minimum and maximum within the whisker bounds.
+   - Outliers are plotted as individual points.
+
+---
+
+## **Example**
+
+**Dataset**: [7, 15, 36, 39, 40, 41, 42, 43, 46, 49]
+
+1. **Five-Number Summary**:
+   - Minimum: 7
+   - Q1: 36
+   - Median (Q2): 40.5
+   - Q3: 43
+   - Maximum: 49
+
+2. **IQR**:
+   $$
+   \text{IQR} = Q3 - Q1 = 43 - 36 = 7
+   $$
+
+3. **Whisker Bounds**:
+   - Lower Bound:
+     $$
+     Q1 - 1.5 \times \text{IQR} = 36 - 1.5 \times 7 = 25.5
+     $$
+   - Upper Bound:
+     $$
+     Q3 + 1.5 \times \text{IQR} = 43 + 1.5 \times 7 = 53.5
+     $$
+
+4. **Outliers**:
+   - Values below 25.5 or above 53.5.
+   - No outliers in this dataset.
+
+---
+
+## **Boxplot Summary**
+- **Box**: Spans from Q1 (36) to Q3 (43).
+- **Median**: A line at 40.5 inside the box.
+- **Whiskers**: Extend to 7 (Minimum) and 49 (Maximum).
+- **Outliers**: None.
+
+---
+
+## **Applications**
+- **Descriptive Statistics**: Summarizing data distribution.
+- **Outlier Detection**: Highlight extreme values.
+- **Comparative Analysis**: Comparing multiple datasets side by side.
+
+---
+
+## **Visual Representation**
+
+A boxplot visually looks like this:
+
+# **Scatter Plot**
+
+A scatter plot is used to visualize the relationship between two numerical variables. Each point in the plot represents one observation, with its position determined by the values of the two variables.
+
+---
+
+## **Components of a Scatter Plot**
+
+1. **X-Axis**: Represents the independent variable.
+2. **Y-Axis**: Represents the dependent variable.
+3. **Points**: Each point represents an observation, with its position determined by the values of \( x \) (independent variable) and \( y \) (dependent variable).
+
+---
+
+## **Purpose of a Scatter Plot**
+
+1. **Identify Relationships**:
+   - Determine if a relationship exists between two variables (e.g., positive, negative, or no correlation).
+2. **Detect Patterns**:
+   - Identify trends, clusters, or outliers.
+3. **Highlight Correlation**:
+   - Visualize the strength and direction of a relationship.
+
+---
+
+## **Steps to Create a Scatter Plot**
+
+1. **Prepare the Data**:
+   - Collect two numerical variables for analysis.
+2. **Assign Axes**:
+   - Plot the independent variable on the \( x \)-axis.
+   - Plot the dependent variable on the \( y \)-axis.
+3. **Plot Points**:
+   - For each observation, position a point at the corresponding \( (x, y) \) coordinates.
+
+---
+
+## **Example**
+
+### Dataset:
+
+| Observation | \( x \) (Hours Studied) | \( y \) (Test Score) |
+|-------------|--------------------------|-----------------------|
+| 1           | 1                        | 50                    |
+| 2           | 2                        | 55                    |
+| 3           | 3                        | 65                    |
+| 4           | 4                        | 70                    |
+| 5           | 5                        | 80                    |
+
+### Scatter Plot Coordinates:
+- \( (1, 50) \)
+- \( (2, 55) \)
+- \( (3, 65) \)
+- \( (4, 70) \)
+- \( (5, 80) \)
+
+---
+
+## **Interpreting the Scatter Plot**
+
+1. **Positive Correlation**:
+   - As \( x \) increases, \( y \) also increases.
+2. **Negative Correlation**:
+   - As \( x \) increases, \( y \) decreases.
+3. **No Correlation**:
+   - No apparent relationship between \( x \) and \( y \).
+
+---
+
+# **Covariance**
+
+Covariance is a statistical measure that quantifies the degree to which two random variables change together. It helps determine the **direction** of the relationship between the variables.
+
+---
+
+## **Formula for Covariance**
+
+For two variables, \( X \) and \( Y \), with \( n \) data points:
+
+### **Population Covariance**
+$$
+\text{Cov}(X, Y) = \frac{\sum_{i=1}^{n} (X_i - \mu_X)(Y_i - \mu_Y)}{n}
+$$
+
+### **Sample Covariance**
+$$
+\text{Cov}(X, Y) = \frac{\sum_{i=1}^{n} (X_i - \bar{X})(Y_i - \bar{Y})}{n - 1}
+$$
+
+Where:
+- \( X_i \): The \( i \)-th value of \( X \).
+- \( Y_i \): The \( i \)-th value of \( Y \).
+- \( \mu_X \): Mean of \( X \) (for population).
+- \( \mu_Y \): Mean of \( Y \) (for population).
+- \( \bar{X} \): Sample mean of \( X \).
+- \( \bar{Y} \): Sample mean of \( Y \).
+- \( n \): Number of data points.
+
+---
+
+## **Interpreting Covariance**
+
+1. **Positive Covariance**:
+   - When \( X \) increases, \( Y \) tends to increase.
+   - Indicates a positive linear relationship.
+
+2. **Negative Covariance**:
+   - When \( X \) increases, \( Y \) tends to decrease.
+   - Indicates a negative linear relationship.
+
+3. **Zero Covariance**:
+   - No linear relationship between \( X \) and \( Y \).
+
+---
+
+## **Steps to Calculate Covariance**
+
+1. **Find the Mean** of \( X \) and \( Y \):
+   $$
+   \bar{X} = \frac{\sum X_i}{n}, \quad \bar{Y} = \frac{\sum Y_i}{n}
+   $$
+
+2. **Subtract the Mean** from each data point:
+   - Compute \( (X_i - \bar{X}) \) for all \( X \).
+   - Compute \( (Y_i - \bar{Y}) \) for all \( Y \).
+
+3. **Multiply the Deviations**:
+   - Calculate \( (X_i - \bar{X})(Y_i - \bar{Y}) \) for each pair of \( X \) and \( Y \).
+
+4. **Sum the Products**:
+   - Compute \( \sum (X_i - \bar{X})(Y_i - \bar{Y}) \).
+
+5. **Divide by \( n - 1 \)** (for sample) or \( n \) (for population).
+
+---
+
+## **Example**
+
+### Dataset:
+| \( X \) | \( Y \) |
+|-------|-------|
+| 1     | 2     |
+| 2     | 4     |
+| 3     | 6     |
+| 4     | 8     |
+| 5     | 10    |
+
+### Step 1: Calculate the Means
+$$
+\bar{X} = \frac{1 + 2 + 3 + 4 + 5}{5} = 3
+$$
+$$
+\bar{Y} = \frac{2 + 4 + 6 + 8 + 10}{5} = 6
+$$
+
+### Step 2: Subtract the Means
+| \( X \) | \( Y \) | \( X - \bar{X} \) | \( Y - \bar{Y} \) | \( (X - \bar{X})(Y - \bar{Y}) \) |
+|-------|-------|----------------|----------------|--------------------------------|
+| 1     | 2     | -2             | -4             | 8                              |
+| 2     | 4     | -1             | -2             | 2                              |
+| 3     | 6     | 0              | 0              | 0                              |
+| 4     | 8     | 1              | 2              | 2                              |
+| 5     | 10    | 2              | 4              | 8                              |
+
+### Step 3: Sum the Products
+$$
+\sum (X - \bar{X})(Y - \bar{Y}) = 8 + 2 + 0 + 2 + 8 = 20
+$$
+
+### Step 4: Divide by \( n - 1 \) (Sample Covariance)
+$$
+\text{Cov}(X, Y) = \frac{20}{5 - 1} = \frac{20}{4} = 5
+$$
+
+---
+
+## **Applications**
+
+1. **Statistics**:
+   - Understanding relationships between variables.
+2. **Portfolio Management**:
+   - Measuring how stock prices move together.
+3. **Machine Learning**:
+   - Feature selection and correlation analysis.
+
+---
+
+## **Limitations**
+- Covariance is **not standardized**, making it difficult to interpret its magnitude directly.
+- To address this, the **correlation coefficient** is often used:
+   $$
+   \text{Correlation} = \frac{\text{Cov}(X, Y)}{\sigma_X \cdot \sigma_Y}
+   $$
+   
+Where $$\sigma_X$$ and $$\sigma_Y$$ are the standard deviations of $$X$$ and $$Y$$, respectively.
+   
+---
+
+Covariance is a foundational concept in understanding relationships between variables and serves as the basis for more advanced techniques like correlation and regression analysis.
+
+
