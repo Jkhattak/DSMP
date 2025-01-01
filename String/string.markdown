@@ -4,6 +4,7 @@
 
 - A string is a `sequence of characters` enclosed within single quotes ('), double quotes ("), or triple quotes (''' or """). 
 - Strings are `immutable`, meaning that once you create a string, you cannot modify its content.
+- Python does not have a character data type so single character is a string of `length 1`
 
 ```
 single_quote_string = 'Hello'
@@ -23,6 +24,10 @@ print(word[-1]) # Output: n (negative index)
 ```
 
 #### String Slicing 
+
+Slicing is a way to extract portion of a string by specifying the *start* and *end* indexes.
+
+The syntax for slicing is **string**[*start : end*] where **start** starting index and **end** is stopping index *(excluded*)
 
 ```
 word = "Python"
@@ -154,6 +159,10 @@ word = "hello"
 # word[0] = "H"  # This will raise an error
 word = "Hello"   # Instead, create a new string
 ```
+
+## Strings Error
+- Accessing an index out of range will cause an **IndexError**. 
+- Only integers are allowed as indicies and using a float or other types will result in a **TypeError**
 
 ## Advanced String Manipulation
 

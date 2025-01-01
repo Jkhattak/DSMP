@@ -10,7 +10,7 @@ There are two stages where error may happen in program
 - Error is raised by the interpreter/compiler
 - You can solve it by rectifying the program 
 
-`print 'hello world' &rightarrow; will result in `syntax error`
+print `hello world` &rightarrow; will result in `syntax error`
 
 ### Other examples of syntax error
 - Leaving symbols like colon, brackets

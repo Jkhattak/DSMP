@@ -1,27 +1,141 @@
 # Python list
 
-## What are Lists?
 
-List is a datat type where you can store multiple items under 1 name. More technically, lists act like **dynamic arrays** which means you can add more items on the fly.
+## What is list?
+- **Definition**: A list is an ordered, mutable, and iterable collection in Python that can hold elements of different types.
+- **Syntax**: 
+```python
+  my_list = [1, 2, 3, 4]
+  ```
 
-> L = [20, 'jessa', 35.75, [30,60,90]]
----
 
-## Array vs Lists
+# Array vs List 
 
-- Fixed vs Dynamic size
-- Convenience -> ***Hetroogenous***
-- Arrays are ***homogenous*** (only store same data type)
-- Speed of execution (***Array runs faster than list***)
-- Memory (***Array take less memory compared to list***)
+## Key Differences
 
-> Array->  array[Fixed size]
+1. **Fixed vs Dynamic Size**:
+   - **Array**:
+     - Fixed size when created. Cannot dynamically grow/shrink.
+     - Used for efficient memory management and performance.
+   - **List**:
+     - Dynamic size. Can grow or shrink as needed.
+     - Convenient for everyday tasks where size is unpredictable.
+
+   **Example**:
+   ```python
+   from array import array
+
+   # Array: Fixed size, requires type declaration
+   arr = array('i', [1, 2, 3])  # 'i' for integers
+   arr.append(4)  # Limited dynamic capability
+   # You cannot mix types in an array
+
+   # List: Fully dynamic
+   lst = [1, "hello", 3.14]
+   lst.append("world")  # Completely flexible
+
+2. **Homogeneous vs Heterogeneous**:
+   - **Array**:
+
+      - Homogeneous: All elements must be of the same data type.
+
+   - **List**:
+
+      - Heterogeneous: Can store elements of mixed data types (e.g., integers, strings, floats, etc.).
+   ```python
+   # Array: Homogeneous
+   arr = array('f', [1.1, 2.2, 3.3])  # Only float values allowed
+
+   # List: Heterogeneous
+   lst = [1, "text", 3.14, [5, 6]]
+   ```
+3. **Speed of Execution**:
+
+   - **Array**:
+      - Faster for numerical operations and computation-heavy tasks due to its low-level data handling.
+   - **List**:
+      - Slower due to its flexibility (e.g., type checking for mixed elements, dynamic resizing).
+
+   ```python 
+   import time
+
+   # Array operations
+   arr = array('i', range(1_000_000))
+   start = time.time()
+   arr_sum = sum(arr)
+   print("Array sum:", time.time() - start)
+
+   # List operations
+   lst = list(range(1_000_000))
+   start = time.time()
+   lst_sum = sum(lst)
+   print("List sum:", time.time() - start)
+   ```
+
+4. **Memory Usage**:
+
+   - **Array**:
+      - Takes less memory due to type constraints and compact data storage.
+   - **List**:
+      - Takes more memory since it stores metadata for each element to allow dynamic resizing and heterogeneity.
+
+   ```python 
+   import sys
+
+   arr = array('i', range(1000))
+   lst = list(range(1000))
+
+   print("Array size:", sys.getsizeof(arr))
+   print("List size:", sys.getsizeof(lst))
+   ```
+5. **Convenience**:
+
+   - **Array**:
+      - Limited operations (e.g., numerical computation). Must use specialized libraries like numpy for advanced operations.
+   - **List**:
+      - Provides more built-in methods (e.g., slicing, indexing, appending), making it easier for general use.
+
+| **Feature**     | **Array**                | **List**                      |
+|------------------|--------------------------|--------------------------------|
+| **Size**        | Fixed                   | Dynamic                       |
+| **Type**        | Homogeneous             | Heterogeneous                 |
+| **Performance** | Faster for computation  | Slower for computation        |
+| **Memory**      | Less                    | More                          |
+| **Convenience** | Limited operations      | Flexible with many methods    |
 
 ## How are arrays stored in memory?
 
-Arrays are stored in memory using their memory address. For example, instead of memory storing 4 from an array below, it will store it's binary address instead.
+1. **Contiguous Memory Allocation**:
 
-> arrays --> int arr(50)
+   - Arrays are stored in a contiguous block of memory.
+   - Each element of the array is placed sequentially in adjacent memory locations.
+   - The array's starting address (base address) points to the memory location of the first element.
+
+2. **Memory Address Calculation**:
+   - The memory address of each element is calculated using the formula:
+     - `Address = Base_Address + (Index * Size_of_Element)`
+   - Example: For an integer array arr[50] with a base address of 1000 (in bytes) and each integer taking 4 bytes:
+
+     - Address of arr[0] = 1000
+     - Address of arr[1] = 1000 + (1 * 4) = 1004
+     - Address of arr[2] = 1000 + (2 * 4) = 1008
+
+2. **Efficiency**:
+
+   - Contiguous storage allows for fast access to elements using their index.
+   - Since the memory address of an element can be directly computed, accessing an element in an array is an O(1) operation.
+3. **Data Representation**:
+
+   - Instead of storing the actual value (e.g. 4) in memory, the system stores the binary equivalent.
+   - Example:  
+     - `4 in binary (for 4 bytes): 00000000 00000000 00000000 00000100`
+
+### Advantages of Contiguous Storage:
+
+   - Efficient Indexing:
+      -  Direct access to elements without searching.
+   - Cache Optimization:
+      -  Contiguous blocks make array operations cache-friendly.
 
 ![Memory Array](MemoryArray.jpg)
 
@@ -33,9 +147,48 @@ Arrays are stored in memory using their memory address. For example, instead of 
 
 Let's say the number 1 is stored at memory address 500, the number 2 at address 1000, and so on. Instead of storing the actual numbers, a memory block will store these addresses. This memory block also has its own address, like 5000 for example, where the reference to 1 is stored. This is known as a **referential array**.
 
-## Referential Array
+# Referential Array
 
-A referential array is an array that stores memory addresses (references or pointers) of its elements, rather than the actual data values themselves.
+## How Are Lists Stored in Memory?
+
+### Key Concepts:
+
+#### 1. Dynamic Storage:
+- Python lists are **dynamic arrays**, but unlike traditional arrays:
+  - They can store elements of **different types**.
+  - Lists do not store the actual data values directly; instead, they store **references (or pointers)** to the memory addresses of the objects they contain.
+
+#### 2. Referential Array:
+- A Python list is essentially a **referential array**:
+  - The list itself is a **block of memory** (contiguous) that stores references (pointers) to other objects.
+  - Each object referenced can be located **anywhere in memory**.
+
+#### Example:
+```python
+List = [1, 2, 3, 4, 5]
+```
+- Memory Address for the List: 5000
+- References in the List:
+
+   - Reference to 1 stored at 5000
+   - Reference to 2 stored at 5004
+   - Reference to 3 stored at 5008
+
+- Actual values (1, 2, etc.) stored at memory locations like 500, 1000, etc.
+
+3. **Advantages of Referential Array**:
+
+   - Flexibility:
+      -  A Python list can hold heterogeneous data types (e.g., integers, strings, objects) because it stores references, not raw values.
+   - Dynamic Resizing:
+      - Python lists can grow/shrink because the underlying memory block that stores references is reallocated as needed.
+
+## Dynamic Resizing:
+
+   - Initial Allocation:
+      -  Python allocates more memory than needed when a list is created (over-allocating), which avoids frequent resizing during appending.
+   - When Full:
+      -  If the list exceeds its allocated memory, Python creates a new memory block with double the previous size (or more) and copies the references to the new block.
 
 ```{python}
 L = [1,2,3,4,5]

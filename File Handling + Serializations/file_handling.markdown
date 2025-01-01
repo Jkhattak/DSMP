@@ -64,21 +64,21 @@ with open("example.bin", "rb") as file:
 
 Python provides various modes to open a file:
 
-- **"r"**: Read mode (default). Opens a file for reading.
-- **"w"**: Write mode. Opens a file for writing (overwrites the file if it exists).
-- **"a"**: Append mode. Opens a file for appending (adds data to the end of the file).
-- **"b"**: Binary mode. Used with `r`, `w`, or `a` to work with binary files.
-- **"x"**: Exclusive creation. Creates a file, but raises an error if the file already exists.
-- **"t"**: Text mode (default). Used with `r`, `w`, or `a` for text files.
+- **`r`**: Read mode (default). Opens a file for reading.
+- **`w`**: Write mode. Opens a file for writing (overwrites the file if it exists).
+- **`a`**: Append mode. Opens a file for appending (adds data to the end of the file).
+- **`b`**: Binary mode. Used with `r`, `w`, or `a` to work with binary files.
+- **`x`**: Exclusive creation. Creates a file, but raises an error if the file already exists.
+- **`t`**: Text mode (default). Used with `r`, `w`, or `a` for text files.
 
 ---
 
 ### Combined Modes
 
-- **"rb"**: Read binary
-- **"wb"**: Write binary
-- **"rt"**: Read text (default)
-- **"wt"**: Write text (default)
+- **`rb`**: Read binary
+- **`wb`**: Write binary
+- **`rt`**: Read text (default)
+- **`wt`**: Write text (default)
 
 ## Summary
 

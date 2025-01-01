@@ -494,7 +494,7 @@ print(s)
 ```
 ### Remove key-value pair
 - Pop : *Remove specific value by proviing key to it*
-- Popitem : *last item gets deleted*
+- Popitem : *last item gets deleted (both key and and value)*
 - Del : *Same as pop*
 - Clear : *Clears the dictionary all the way*
 
