@@ -306,3 +306,410 @@ match5    10
 match6     0
 dtype: int64
 ```
+
+## Astype 
+
+The `astype()` method is used to cast a pandas Series or Dataframe
+column to a specified data type. 
+
+```python
+DataFrame.astype(dtype, copy=True, errors='raise')
+Series.astype(dtype, copy=True, errors='raise')
+```
+## Between 
+
+The `between()` method in pandas is used to filter values in a Series that fall
+between two specified boundries. It can include or exclude the boundry 
+values based on the parameters. 
+
+```python
+Series.between(left, right, inclusive='both')
+```
+
+## Clip 
+The `clip()` in pandas is used to clip values in a Series or Dataframe,
+meaning values outside a specified range are replaced by the boundary
+values (i.e., capped at a minimum or maximum)
+
+```python 
+Series.clip(lower=None, upper=None, axis=None, inplace=False)
+DataFrame.clip(lower=None, upper=None, axis=None, inplace=False)
+```
+
+```python
+import pandas as pd
+
+# Create a Series
+series = pd.Series([10, 20, 30, 40, 50])
+
+# Clip values between 15 and 35
+clipped_series = series.clip(lower=15, upper=35)
+print(clipped_series)
+# Output:
+# 0    15
+# 1    20
+# 2    30
+# 3    35
+# 4    35
+# dtype: int64
+```
+## Drop duplicates
+
+The `drop_duplicates()` method in pandas removes duplicate rows from a DataFrame or duplicate elements from a Series.
+
+```python
+Series.drop_duplicates(keep='first', inplace=False)
+```
+
+```python 
+import pandas as pd
+
+# Create a DataFrame
+data = {
+    'Name': ['Alice', 'Bob', 'Alice', 'Charlie'],
+    'Age': [25, 30, 25, 35]
+}
+df = pd.DataFrame(data)
+
+# Remove duplicate rows
+df_no_duplicates = df.drop_duplicates()
+print(df_no_duplicates)
+# Output:
+#       Name  Age
+# 0    Alice   25
+# 1      Bob   30
+# 3  Charlie   35
+```
+
+## Duplicated
+
+The `duplicated()` method identifies duplicate rows or values in a Series or DataFrame and returns a boolean Series indicating whether each row/element is a duplicate.
+
+```Python
+Series.duplicated(keep='first')
+```
+
+```python 
+import pandas as pd
+
+# Create a DataFrame
+data = {
+    'Name': ['Alice', 'Bob', 'Alice', 'Charlie', 'Bob'],
+    'Age': [25, 30, 25, 35, 30]
+}
+df = pd.DataFrame(data)
+
+# Identify duplicate rows
+print(df.duplicated())
+# Output:
+# 0    False
+# 1    False
+# 2     True
+# 3    False
+# 4     True
+# dtype: bool
+```
+
+## Size 
+
+The `size` attribute in pandas is used to return the total number of elements in a pandas object (Series or DataFrame). It is calculated as:
+
+- For a `Series`: The total number of elements (equal to the length of the Series).
+- For a `DataFrame`: The number of rows multiplied by the number of columns.
+
+## Isnull
+The `isnull()` method in pandas is used to detect missing values (NaN, None, or NaT) in a Series or DataFrame. It returns a boolean object of the same shape, where:
+
+- `True` indicates a missing value.
+- `False` indicates a non-missing value.
+
+## Dropena
+The `dropna()` method in pandas is used to remove missing values (NaN, None, or NaT) from a Series or DataFrame. It allows you to drop rows or columns containing missing values.
+
+```python
+import pandas as pd
+
+# Create a DataFrame with missing values
+data = {
+    'A': [1, None, 3],
+    'B': [4, 5, None],
+    'C': [7, 8, 9]
+}
+df = pd.DataFrame(data)
+
+# Drop rows with missing values
+df_cleaned = df.dropna()
+print(df_cleaned)
+# Output:
+#      A    B  C
+# 0  1.0  4.0  7
+```
+
+## Fillna 
+The `fillna()` method in pandas is used to replace missing values (NaN, None, or NaT) in a Series or DataFrame with a specified value or a strategy (e.g., forward fill, backward fill)
+
+```python
+import pandas as pd
+
+# Create a DataFrame with missing values
+data = {
+    'A': [1, None, 3],
+    'B': [4, 5, None],
+    'C': [None, None, 9]
+}
+df = pd.DataFrame(data)
+
+# Fill missing values with 0
+df_filled = df.fillna(0)
+print(df_filled)
+# Output:
+#      A    B    C
+# 0  1.0  4.0  0.0
+# 1  0.0  5.0  0.0
+# 2  3.0  0.0  9.0
+```
+
+## Isin  
+The `isin()` method in pandas is used to filter rows or elements in a Series or DataFrame by checking if they are present in a given list, set, or another iterable. It returns a boolean object of the same shape as the original, with True for values that are in the provided iterable and False otherwise.
+
+```python
+import pandas as pd
+
+# Create a Series
+series = pd.Series([1, 2, 3, 4, 5])
+
+# Check if elements are in the list [2, 4, 6]
+result = series.isin([2, 4, 6])
+print(result)
+# Output:
+# 0    False
+# 1     True
+# 2    False
+# 3     True
+# 4    False
+# dtype: bool
+
+# Filter the Series
+filtered = series[series.isin([2, 4, 6])]
+print(filtered)
+# Output:
+# 1    2
+# 3    4
+# dtype: int64
+```
+
+## Apply 
+The `apply()` method in pandas is used to apply a custom function or built-in function to each element of a pandas Series or to rows/columns of a DataFrame
+
+```python 
+DataFrame.apply(func, axis=0, raw=False, result_type=None, args=())
+```
+```python
+import pandas as pd
+
+# Create a Series
+series = pd.Series([1, 2, 3, 4, 5])
+
+# Apply a custom function to square each value
+squared = series.apply(lambda x: x ** 2)
+print(squared)
+# Output:
+# 0     1
+# 1     4
+# 2     9
+# 3    16
+# 4    25
+# dtype: int64
+```
+
+## Copy 
+The `copy()` method in pandas is used to create a copy of a pandas object (Series or DataFrame). This ensures that changes made to the copy do not affect the original object, and vice versa.
+
+```python
+import pandas as pd
+
+# Create a DataFrame
+data = {'A': [1, 2, 3], 'B': [4, 5, 6]}
+df = pd.DataFrame(data)
+
+# Create a deep copy
+df_copy = df.copy()
+
+# Modify the copy
+df_copy['A'] = [10, 20, 30]
+
+# Original DataFrame remains unchanged
+print("Original DataFrame:")
+print(df)
+# Output:
+#    A  B
+# 0  1  4
+# 1  2  5
+# 2  3  6
+
+print("\nModified Copy:")
+print(df_copy)
+# Output:
+#     A  B
+# 0  10  4
+# 1  20  5
+# 2  30  6
+```
+
+## View 
+In pandas, a view refers to a subset of the original DataFrame or Series that reflects changes made to the original object, and vice versa. Unlike a copy, a view does not create a separate object in memory—it is a reference to the original data.
+
+```python 
+import pandas as pd
+
+# Create a DataFrame
+data = {'A': [1, 2, 3], 'B': [4, 5, 6]}
+df = pd.DataFrame(data)
+
+# Create a view (slicing)
+view_df = df.loc[:, 'A']
+
+# Modify the view
+view_df.iloc[0] = 100
+
+# Original DataFrame is updated
+print("Original DataFrame after modifying the view:")
+print(df)
+# Output:
+#      A  B
+# 0  100  4
+# 1    2  5
+# 2    3  6
+```
+
+# Panda Dataframe
+
+A DataFrame in pandas is a two-dimensional, tabular data structure with labeled rows and columns. You can create a DataFrame in several ways, depending on the source of your data.
+
+```python
+import pandas as pd
+
+# Create a DataFrame from a dictionary
+data = {
+    'Name': ['Alice', 'Bob', 'Charlie'],
+    'Age': [25, 30, 35],
+    'Salary': [50000, 60000, 70000]
+}
+df = pd.DataFrame(data)
+print(df)
+# Output:
+#       Name  Age  Salary
+# 0    Alice   25   50000
+# 1      Bob   30   60000
+# 2  Charlie   35   70000
+```
+## Important functions to run on new dataset
+- shape
+- dtypes
+- index
+- columns
+- values
+- head/tail
+- sample
+- info
+- describe
+- isnull
+- duplicated
+- renames
+
+## Rename
+The rename() method in pandas is used to modify the labels of rows and/or columns in a DataFrame or Series. It allows for renaming specific labels or mapping them using a function.
+
+```python
+import pandas as pd
+
+# Create a DataFrame
+data = {'A': [1, 2, 3], 'B': [4, 5, 6]}
+df = pd.DataFrame(data)
+
+# Rename columns
+renamed_df = df.rename(columns={'A': 'Column1', 'B': 'Column2'})
+print(renamed_df)
+# Output:
+#    Column1  Column2
+# 0        1        4
+# 1        2        5
+# 2        3        6
+```
+
+## Math Methods 
+
+- Sum
+- Min/Max
+- Median
+- Std
+
+```python
+students.sum(axis=1) #axis 1 allows summation on rows
+
+#output
+0    190
+1    167
+2    234
+3    195
+4      0
+5      0
+dtype: int64
+```
+
+## Selecting rows from a Dataframe
+
+- iloc - searches using index Position
+- loc - searches using index labels 
+
+### loc: Label-Based Indexing
+
+-    loc selects data based on row and column labels.
+-    You use the names of rows and columns to extract data.
+-    Can include boolean arrays or conditions.
+-    Includes both the start and end index when slicing.
+
+
+```python
+import pandas as pd
+df = pd.DataFrame({'A': [1, 2, 3], 'B': [4, 5, 6]}, index=['x', 'y', 'z'])
+
+# Using loc with row labels
+print(df.loc['x'])  # Row labeled 'x'
+# Output: A    1
+#         B    4
+
+# Using loc with both row and column labels
+print(df.loc['x', 'A'])  # Value at row 'x' and column 'A'
+# Output: 1
+
+# Slicing with loc
+print(df.loc['x':'y'])  # Rows from 'x' to 'y' (inclusive)
+# Output: A  B
+#         x  1  4
+#         y  2  5
+
+```
+### iloc
+
+iloc: Position-Based Indexing
+
+-    iloc selects data based on row and column positions (numerical index).
+-    You use numbers to specify row and column locations.
+-    Excludes the end index when slicing.   
+```python
+# Using iloc with row positions
+print(df.iloc[0])  # First row (position 0)
+# Output: A    1
+#         B    4
+
+# Using iloc with both row and column positions
+print(df.iloc[0, 0])  # Value at 1st row, 1st column
+# Output: 1
+
+# Slicing with iloc
+print(df.iloc[0:2])  # Rows from position 0 to 1 (2 is excluded)
+# Output: A  B
+#         x  1  4
+#         y  2  5
+```
