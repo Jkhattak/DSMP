@@ -713,3 +713,26 @@ print(df.iloc[0:2])  # Rows from position 0 to 1 (2 is excluded)
 #         x  1  4
 #         y  2  5
 ```
+
+## Apply 
+
+The `apply()` method in pandas is used to apply a function to each element of a Series or to rows/columns of a DataFrame. It allows for custom transformations and complex operations on data.
+
+```python
+import pandas as pd
+
+# Create a Series
+series = pd.Series([1, 2, 3, 4, 5])
+
+# Square each value
+squared = series.apply(lambda x: x ** 2)
+print(squared)
+# Output:
+# 0     1
+# 1     4
+# 2     9
+# 3    16
+# 4    25
+# dtype: int64
+```
+
