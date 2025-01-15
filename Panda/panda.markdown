@@ -736,3 +736,201 @@ print(squared)
 # dtype: int64
 ```
 
+
+## Value Counts (Series and Dataframe)
+
+The `value_counts()` method in pandas is used to count the occurrences of unique values in a Series. It returns a Series containing the counts of each unique value, sorted in descending order by default.
+
+```python
+import pandas as pd
+
+# Create a Series
+series = pd.Series(['apple', 'banana', 'apple', 'orange', 'banana', 'apple'])
+
+# Get value counts
+print(series.value_counts())
+# Output:
+# apple     3
+# banana    2
+# orange    1
+# dtype: int64
+```
+
+## Sort_Values (Series and DataFrame)
+The `sort_values()` method in pandas is used to sort a Series or DataFrame by values in ascending or descending order.
+
+```python
+import pandas as pd
+
+# Create a Series
+series = pd.Series([3, 1, 4, 1, 5, 9, 2, 6])
+
+# Sort in ascending order
+print(series.sort_values())
+# Output:
+# 1    1
+# 3    1
+# 6    2
+# 0    3
+# 2    4
+# 4    5
+# 7    6
+# 5    9
+# dtype: int64
+
+# Sort in descending order
+print(series.sort_values(ascending=False))
+```
+
+### Example  2
+
+```python
+# Create a DataFrame
+data = {'Name': ['Alice', 'Bob', 'Charlie'], 'Age': [25, 30, 20]}
+df = pd.DataFrame(data)
+
+# Sort by 'Age' in ascending order
+print(df.sort_values(by='Age'))
+# Output:
+#       Name  Age
+# 2  Charlie   20
+# 0    Alice   25
+# 1      Bob   30
+
+# Sort by 'Age' in descending order
+print(df.sort_values(by='Age', ascending=False))
+```
+```python
+# Create a DataFrame with NaN values
+data = {'A': [3, 2, None, 1], 'B': [None, 5, 6, 7]}
+df = pd.DataFrame(data)
+
+# Sort with NaN values at the beginning
+print(df.sort_values(by='A', na_position='first'))
+# Output:
+#      A    B
+# 2  NaN  6.0
+# 3  1.0  7.0
+# 1  2.0  5.0
+# 0  3.0  NaN
+```
+
+```python
+# Sort by 'Age' (ascending) and then by 'Name' (descending)
+print(df.sort_values(by=['Age', 'Name'], ascending=[True, False]))
+# Output:
+#       Name  Age
+# 2  Charlie   20
+# 0    Alice   25
+# 1      Bob   30
+```
+## Rank (Series)
+
+The `rank()` method in pandas assigns a ranking to each element in a Series or DataFrame based on its value. It handles ties using different ranking methods and can rank values in ascending or descending order.
+
+```python
+import pandas as pd
+
+# Create a Series
+series = pd.Series([100, 200, 300, 100, 200])
+
+# Default ranking (ascending, average for ties)
+print(series.rank())
+# Output:
+# 0    1.5  # (100 appears twice, so both get (1+2)/2 = 1.5)
+# 1    3.5  # (200 appears twice, so both get (3+4)/2 = 3.5)
+# 2    5.0  # (300 is the highest, so it gets rank 5)
+# 3    1.5
+# 4    3.5
+# dtype: float64
+```
+## Sort index 
+
+The `sort_index()` method in pandas is used to sort a Series or DataFrame by its index labels rather than the values. This is useful when working with indexed data.
+
+```python
+import pandas as pd
+
+# Create a Series with an unordered index
+series = pd.Series([10, 20, 30], index=['b', 'a', 'c'])
+
+# Sort index
+sorted_series = series.sort_index()
+print(sorted_series)
+# Output:
+# a    20
+# b    10
+# c    30
+# dtype: int64
+```
+
+```python
+# Create a DataFrame with an unordered index
+data = {'A': [1, 2, 3], 'B': [4, 5, 6]}
+df = pd.DataFrame(data, index=['b', 'a', 'c'])
+
+# Sort index
+sorted_df = df.sort_index()
+print(sorted_df)
+# Output:
+#    A  B
+# a  2  5
+# b  1  4
+# c  3  6
+```
+
+## Set Index (Dataframe)
+
+The `set_index()` method in pandas is used to set one or more columns as the index of a DataFrame. This is useful for organizing data and optimizing lookups.
+
+```python
+import pandas as pd
+
+# Create a DataFrame
+data = {'ID': [101, 102, 103], 'Name': ['Alice', 'Bob', 'Charlie'], 'Age': [25, 30, 35]}
+df = pd.DataFrame(data)
+
+# Set 'ID' as the index
+df_indexed = df.set_index('ID')
+print(df_indexed)
+# Output:
+#       Name  Age
+# ID             
+# 101  Alice   25
+# 102    Bob   30
+# 103 Charlie   35
+```
+
+```python
+# Set 'ID' as the index but keep it as a column
+df_indexed = df.set_index('ID', drop=False)
+print(df_indexed)
+# Output:
+#       ID     Name  Age
+# ID                    
+# 101  101   Alice   25
+# 102  102     Bob   30
+# 103  103  Charlie   35
+```
+
+
+## Reset_index
+
+The `reset_index()` method in pandas is used to reset the index of a DataFrame by converting the current index into a column and restoring the default integer index.
+
+```python
+import pandas as pd
+
+# Create a DataFrame with an index
+data = {'Name': ['Alice', 'Bob', 'Charlie'], 'Age': [25, 30, 35]}
+df = pd.DataFrame(data, index=['a', 'b', 'c'])
+
+# Reset the index
+df_reset = df.reset_index()
+print(df_reset)
+# Output:
+#   index     Name  Age
+# 0     a   Alice   25
+# 1     b     Bob   30
+# 2     c  Charlie   35
+```
